@@ -64,6 +64,8 @@ jobs:
 
     - name: Perform migrations
       run: docker-compose exec --user 0 app php artisan migrate --force
+      env:
+        COMPOSE_INTERACTIVE_NO_CLI: 1
       working-directory: ../core
 
     - name: Run Schemaspy
