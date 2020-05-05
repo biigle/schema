@@ -18,6 +18,9 @@ jobs:
     - name: Download PostgreSQL JDBC driver
       run: curl -LO https://jdbc.postgresql.org/download/postgresql-42.2.12.jar
 
+    - name: Install graphviz
+      run: apt-get install -y graphviz
+
     - uses: actions/checkout@v1
       with:
         repository: biigle/core
