@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>biigle Database</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="bower/html5shiv/html5shiv.min.js"></script>
+        <script src="bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="index.html" class="navbar-brand"><b>biigle</b> Database</a>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>All Relationships</h1>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-code-fork"></i>
+                            <h3 class="box-title">Diagrams</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom">
+                                <!-- Tabs within a box -->
+                                <h5>By default only columns that are primary keys, foreign keys or indexes are shown.</h5>
+                                <ul class="nav nav-tabs pull-left ui-sortable-handle">
+                                    <li class="active"><a href="#compactDegreeImg-chart" data-toggle="tab" aria-expanded="true">Compact</a></li>
+                                    <li class=""><a href="#largeDegreeImg-chart" data-toggle="tab" aria-expanded="true">Large</a></li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="chart tab-pane active" id="compactDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="compactRelationshipsDiagram" name="compactRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/annotation_assistance_requests.html" target="_top" title="annotation_assistance_requests" alt="" coords="1297,1443,1604,1677">
+<area shape="rect" id="node5" href="tables/annotations.html" target="_top" title="annotations" alt="" coords="1043,567,1207,743">
+<area shape="rect" id="node32" href="tables/users.html" target="_top" title="users" alt="" coords="185,1620,363,1825">
+<area shape="rect" id="node2" href="tables/annotation_labels.html" target="_top" title="annotation_labels" alt="" coords="1348,2147,1553,2352">
+<area shape="rect" id="node17" href="tables/labels.html" target="_top" title="labels" alt="" coords="723,2205,893,2469">
+<area shape="rect" id="node3" href="tables/annotation_session_user.html" target="_top" title="annotation_session_user" alt="" coords="996,1113,1253,1236">
+<area shape="rect" id="node4" href="tables/annotation_sessions.html" target="_top" title="annotation_sessions" alt="" coords="667,720,949,925">
+<area shape="rect" id="node37" href="tables/volumes.html" target="_top" title="volumes" alt="" coords="443,749,603,925">
+<area shape="rect" id="node10" href="tables/images.html" target="_top" title="images" alt="" coords="743,363,873,568">
+<area shape="rect" id="node29" href="tables/shapes.html" target="_top" title="shapes" alt="" coords="743,585,873,703">
+<area shape="rect" id="node6" href="tables/api_tokens.html" target="_top" title="api_tokens" alt="" coords="445,2160,602,2307">
+<area shape="rect" id="node7" href="tables/color_sort_sequences.html" target="_top" title="color_sort_sequences" alt="" coords="690,5,926,181">
+<area shape="rect" id="node8" href="tables/geo_overlays.html" target="_top" title="geo_overlays" alt="" coords="718,199,898,345">
+<area shape="rect" id="node9" href="tables/image_labels.html" target="_top" title="image_labels" alt="" coords="1039,1348,1211,1553">
+<area shape="rect" id="node11" href="tables/label_sources.html" target="_top" title="label_sources" alt="" coords="435,1960,612,2107">
+<area shape="rect" id="node12" href="tables/label_tree_authorized_project.html" target="_top" title="label_tree_authorized_project" alt="" coords="664,1865,952,1988">
+<area shape="rect" id="node16" href="tables/label_trees.html" target="_top" title="label_trees" alt="" coords="445,2612,602,2817">
+<area shape="rect" id="node25" href="tables/projects.html" target="_top" title="projects" alt="" coords="455,1643,592,1789">
+<area shape="rect" id="node13" href="tables/label_tree_project.html" target="_top" title="label_tree_project" alt="" coords="705,2041,911,2164">
+<area shape="rect" id="node14" href="tables/label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="714,2612,902,2764">
+<area shape="rect" id="node28" href="tables/roles.html" target="_top" title="roles" alt="" coords="5,1679,121,1801">
+<area shape="rect" id="node15" href="tables/label_tree_versions.html" target="_top" title="label_tree_versions" alt="" coords="165,2527,383,2703">
+<area shape="rect" id="node36" href="tables/visibilities.html" target="_top" title="visibilities" alt="" coords="199,2720,349,2843">
+<area shape="rect" id="node18" href="tables/maia_annotation_candidates.html" target="_top" title="maia_annotation_candidates" alt="" coords="1310,432,1591,696">
+<area shape="rect" id="node20" href="tables/maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="732,943,884,1148">
+<area shape="rect" id="node19" href="tables/maia_job_states.html" target="_top" title="maia_job_states" alt="" coords="427,1077,620,1195">
+<area shape="rect" id="node21" href="tables/maia_training_proposals.html" target="_top" title="maia_training_proposals" alt="" coords="998,760,1251,965">
+<area shape="rect" id="node22" href="tables/media_types.html" target="_top" title="media_types" alt="" coords="189,779,359,901">
+<area shape="rect" id="node23" href="tables/project_user.html" target="_top" title="project_user" alt="" coords="723,1305,893,1481">
+<area shape="rect" id="node24" href="tables/project_volume.html" target="_top" title="project_volume" alt="" coords="713,1165,903,1288">
+<area shape="rect" id="node26" href="tables/report_types.html" target="_top" title="report_types" alt="" coords="189,2387,359,2509">
+<area shape="rect" id="node27" href="tables/reports.html" target="_top" title="reports" alt="" coords="447,2360,599,2595">
+<area shape="rect" id="node30" href="tables/system_message_types.html" target="_top" title="system_message_types" alt="" coords="1001,280,1248,403">
+<area shape="rect" id="node31" href="tables/system_messages.html" target="_top" title="system_messages" alt="" coords="1346,251,1555,397">
+<area shape="rect" id="node33" href="tables/video_annotation_labels.html" target="_top" title="video_annotation_labels" alt="" coords="1325,1871,1576,2076">
+<area shape="rect" id="node34" href="tables/video_annotations.html" target="_top" title="video_annotations" alt="" coords="1020,1643,1229,1819">
+<area shape="rect" id="node35" href="tables/videos.html" target="_top" title="videos" alt="" coords="741,1643,875,1848">
+</map>
+                                        <a name='diagram'><img id="compactDegreeImg" src="diagrams/summary/relationships.real.compact.png" usemap="#compactRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="largeDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="largeRelationshipsDiagram" name="largeRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/annotation_assistance_requests.html" target="_top" title="annotation_assistance_requests" alt="" coords="1297,1721,1604,2137">
+<area shape="rect" id="node5" href="tables/annotations.html" target="_top" title="annotations" alt="" coords="1043,847,1207,1087">
+<area shape="rect" id="node32" href="tables/users.html" target="_top" title="users" alt="" coords="185,2137,363,2583">
+<area shape="rect" id="node2" href="tables/annotation_labels.html" target="_top" title="annotation_labels" alt="" coords="1348,2776,1553,3045">
+<area shape="rect" id="node17" href="tables/labels.html" target="_top" title="labels" alt="" coords="723,2835,893,3133">
+<area shape="rect" id="node3" href="tables/annotation_session_user.html" target="_top" title="annotation_session_user" alt="" coords="996,1539,1253,1661">
+<area shape="rect" id="node4" href="tables/annotation_sessions.html" target="_top" title="annotation_sessions" alt="" coords="667,976,949,1333">
+<area shape="rect" id="node37" href="tables/volumes.html" target="_top" title="volumes" alt="" coords="443,1064,603,1363">
+<area shape="rect" id="node10" href="tables/images.html" target="_top" title="images" alt="" coords="743,491,873,819">
+<area shape="rect" id="node29" href="tables/shapes.html" target="_top" title="shapes" alt="" coords="743,836,873,959">
+<area shape="rect" id="node6" href="tables/api_tokens.html" target="_top" title="api_tokens" alt="" coords="445,2783,602,3023">
+<area shape="rect" id="node7" href="tables/color_sort_sequences.html" target="_top" title="color_sort_sequences" alt="" coords="690,5,926,187">
+<area shape="rect" id="node8" href="tables/geo_overlays.html" target="_top" title="geo_overlays" alt="" coords="718,204,898,473">
+<area shape="rect" id="node9" href="tables/image_labels.html" target="_top" title="image_labels" alt="" coords="1039,1791,1211,2031">
+<area shape="rect" id="node11" href="tables/label_sources.html" target="_top" title="label_sources" alt="" coords="435,2577,612,2729">
+<area shape="rect" id="node12" href="tables/label_tree_authorized_project.html" target="_top" title="label_tree_authorized_project" alt="" coords="664,2495,952,2617">
+<area shape="rect" id="node16" href="tables/label_trees.html" target="_top" title="label_trees" alt="" coords="445,3451,602,3749">
+<area shape="rect" id="node25" href="tables/projects.html" target="_top" title="projects" alt="" coords="455,2143,592,2383">
+<area shape="rect" id="node13" href="tables/label_tree_project.html" target="_top" title="label_tree_project" alt="" coords="705,2671,911,2793">
+<area shape="rect" id="node14" href="tables/label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="714,3451,902,3603">
+<area shape="rect" id="node28" href="tables/roles.html" target="_top" title="roles" alt="" coords="5,2284,121,2407">
+<area shape="rect" id="node15" href="tables/label_tree_versions.html" target="_top" title="label_tree_versions" alt="" coords="165,3392,383,3573">
+<area shape="rect" id="node36" href="tables/visibilities.html" target="_top" title="visibilities" alt="" coords="199,3591,349,3713">
+<area shape="rect" id="node18" href="tables/maia_annotation_candidates.html" target="_top" title="maia_annotation_candidates" alt="" coords="1310,653,1591,952">
+<area shape="rect" id="node20" href="tables/maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="732,1351,884,1620">
+<area shape="rect" id="node19" href="tables/maia_job_states.html" target="_top" title="maia_job_states" alt="" coords="427,1497,620,1620">
+<area shape="rect" id="node21" href="tables/maia_training_proposals.html" target="_top" title="maia_training_proposals" alt="" coords="998,1104,1251,1373">
+<area shape="rect" id="node22" href="tables/media_types.html" target="_top" title="media_types" alt="" coords="189,1123,359,1245">
+<area shape="rect" id="node23" href="tables/project_user.html" target="_top" title="project_user" alt="" coords="723,1777,893,1959">
+<area shape="rect" id="node24" href="tables/project_volume.html" target="_top" title="project_volume" alt="" coords="713,1637,903,1760">
+<area shape="rect" id="node26" href="tables/report_types.html" target="_top" title="report_types" alt="" coords="189,3135,359,3257">
+<area shape="rect" id="node27" href="tables/reports.html" target="_top" title="reports" alt="" coords="447,3076,599,3433">
+<area shape="rect" id="node30" href="tables/system_message_types.html" target="_top" title="system_message_types" alt="" coords="1001,467,1248,589">
+<area shape="rect" id="node31" href="tables/system_messages.html" target="_top" title="system_messages" alt="" coords="1346,291,1555,560">
+<area shape="rect" id="node33" href="tables/video_annotation_labels.html" target="_top" title="video_annotation_labels" alt="" coords="1325,2500,1576,2740">
+<area shape="rect" id="node34" href="tables/video_annotations.html" target="_top" title="video_annotations" alt="" coords="1020,2120,1229,2389">
+<area shape="rect" id="node35" href="tables/videos.html" target="_top" title="videos" alt="" coords="741,2120,875,2477">
+</map>
+                                        <a name='diagram'><img id="largeDegreeImg" src="diagrams/summary/relationships.real.large.png" usemap="#largeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div>
+                </section>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.1.0</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="bower/pdfmake/pdfmake.min.js"></script>
+        <script src="bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="bower/codemirror/codemirror.js"></script>
+        <script src="bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="bower/admin-lte/dist/js/app.min.js"></script>
+        <script src="relationships.js"></script>
+        <script src="schemaSpy.js"></script>
+    </body>
+</html>
