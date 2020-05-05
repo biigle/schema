@@ -63,7 +63,7 @@ jobs:
       working-directory: ../core
 
     - name: Perform migrations
-      run: docker-compose exec --user 0 app php artisan migrate --force
+      run: docker-compose exec -Tu 0 app php artisan migrate --force
       env:
         COMPOSE_INTERACTIVE_NO_CLI: 1
       working-directory: ../core
@@ -78,7 +78,7 @@ jobs:
         git commit -am "Update schema $(date -Iseconds)"
 
     - name: Push changes
-      uses: ad-m/github-push-action@master
+      uses: ad-m/github-push-action@v0.5.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
