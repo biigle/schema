@@ -49,7 +49,9 @@ jobs:
         docker pull docker.pkg.github.com/biigle/core/app:latest
 
     - name: Start database
-      run: docker-compose up -d --no-build app database
+      run: |
+        docker-compose up -d --no-build app database
+        sleep 5
       working-directory: ../core
 
     - name: Perform migrations
