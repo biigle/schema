@@ -8,7 +8,7 @@ The schema documentation is automatically rebuilt if changes are pushed to the B
 
 ```bash
 curl -X POST \
-   -s "user:token" \
+   -u "username" \
    -H "Content-Type: application/json" \
    --data '{"event_type": "build_application"}' \
    https://api.github.com/repos/biigle/schema/dispatches
