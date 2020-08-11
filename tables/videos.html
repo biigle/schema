@@ -115,6 +115,10 @@
                                                 <td title="video_annotations.video_id references videos.id via video_annotations_video_id_foreign"><a href='video_annotations.html'>video_annotations</a><span class='relatedKey'>.video_id</span></td>
                                                 <td class="constraint detail">video_annotations_video_id_foreign<span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
                                             </tr>
+                                            <tr>
+                                                <td title="video_labels.video_id references videos.id via video_labels_video_id_foreign"><a href='video_labels.html'>video_labels</a><span class='relatedKey'>.video_id</span></td>
+                                                <td class="constraint detail">video_labels_video_id_foreign<span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
                                         </table>
                                     </td>
                                     <td>
@@ -141,98 +145,9 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td><span id="name">name</span></td>
-                                    <td>varchar</td>
-                                    <td>255</td>
-                                    <td title=''></td>
-                                    <td title=''></td>
-                                    <td>null</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><span id="url">url</span></td>
-                                    <td>varchar</td>
-                                    <td>255</td>
-                                    <td title=''></td>
-                                    <td title=''></td>
-                                    <td>null</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="project_id">project_id</span></td>
-                                    <td>int4</td>
-                                    <td>10</td>
-                                    <td title=''></td>
-                                    <td title=''></td>
-                                    <td>null</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                            <tr>
-                                                <td title="videos.project_id references projects.id via videos_project_id_foreign"><a href='projects.html'>projects</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">videos_project_id_foreign<span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
                                     <td><span id="attrs">attrs</span></td>
                                     <td>json</td>
                                     <td>2147483647</td>
-                                    <td title='nullable'>√</td>
-                                    <td title=''></td>
-                                    <td>null</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><span id="created_at">created_at</span></td>
-                                    <td>timestamp</td>
-                                    <td>22</td>
-                                    <td title='nullable'>√</td>
-                                    <td title=''></td>
-                                    <td>null</td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td>
-                                        <table border='0' cellspacing='0' cellpadding='0'>
-                                        </table>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><span id="updated_at">updated_at</span></td>
-                                    <td>timestamp</td>
-                                    <td>22</td>
                                     <td title='nullable'>√</td>
                                     <td title=''></td>
                                     <td>null</td>
@@ -264,10 +179,10 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="creator_id">creator_id</span></td>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="volume_id">volume_id</span></td>
                                     <td>int4</td>
                                     <td>10</td>
-                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
                                     <td>
@@ -277,9 +192,26 @@
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
-                                                <td title="videos.creator_id references users.id via videos_creator_id_foreign"><a href='users.html'>users</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">videos_creator_id_foreign<span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
+                                                <td title="videos.volume_id references volumes.id via videos_volume_id_foreign"><a href='volumes.html'>volumes</a><span class='relatedKey'>.id</span></td>
+                                                <td class="constraint detail">videos_volume_id_foreign<span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
                                             </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="filename">filename</span></td>
+                                    <td>varchar</td>
+                                    <td>512</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
                                     <td></td>
@@ -315,16 +247,22 @@
                                     <td>id</td>
                                 </tr>
                                 <tr>
-                                    <td title='Indexed'>videos_project_id_index</td>
-                                    <td>Performance</td>
-                                    <td><span title='Ascending'>Asc</span></td>
-                                    <td>project_id</td>
+                                    <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> videos_filename_volume_id_unique</td>
+                                    <td>Must be unique</td>
+                                    <td><span title='Ascending'>Asc</span>/<span title='Ascending'>Asc</span></td>
+                                    <td>filename + volume_id</td>
                                 </tr>
                                 <tr>
                                     <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> videos_uuid_unique</td>
                                     <td>Must be unique</td>
                                     <td><span title='Ascending'>Asc</span></td>
                                     <td>uuid</td>
+                                </tr>
+                                <tr>
+                                    <td title='Indexed'>videos_volume_id_index</td>
+                                    <td>Performance</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>volume_id</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -349,35 +287,30 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="projects.html" target="_top" title="projects" alt="" coords="251,163,401,309">
-<area shape="rect" id="node2" href="users.html" target="_top" title="users" alt="" coords="5,241,207,447">
-<area shape="rect" id="node3" href="video_annotations.html" target="_top" title="video_annotations" alt="" coords="769,5,983,181">
-<area shape="rect" id="node4" href="videos.html" target="_top" title="videos" alt="" coords="445,32,725,395">
+<area shape="rect" id="node1" href="video_annotations.html" target="_top" title="video_annotations" alt="" coords="540,5,753,181">
+<area shape="rect" id="node2" href="videos.html" target="_top" title="videos" alt="" coords="227,129,496,375">
+<area shape="rect" id="node4" href="volumes.html" target="_top" title="volumes" alt="" coords="5,249,183,425">
+<area shape="rect" id="node3" href="video_labels.html" target="_top" title="video_labels" alt="" coords="563,199,731,404">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/videos.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="annotation_assistance_requests.html" target="_top" title="annotation_assistance_requests" alt="" coords="411,288,717,376">
-<area shape="rect" id="node2" href="users.html" target="_top" title="users" alt="" coords="165,496,367,701">
-<area shape="rect" id="node11" href="roles.html" target="_top" title="roles" alt="" coords="5,1051,121,1139">
-<area shape="rect" id="node3" href="annotation_labels.html" target="_top" title="annotation_labels" alt="" coords="461,393,667,481">
-<area shape="rect" id="node4" href="annotation_session_user.html" target="_top" title="annotation_session_user" alt="" coords="435,499,693,587">
-<area shape="rect" id="node5" href="api_tokens.html" target="_top" title="api_tokens" alt="" coords="485,604,643,692">
-<area shape="rect" id="node6" href="image_labels.html" target="_top" title="image_labels" alt="" coords="478,709,650,797">
-<area shape="rect" id="node7" href="label_tree_authorized_project.html" target="_top" title="label_tree_authorized_project" alt="" coords="761,577,1049,665">
-<area shape="rect" id="node8" href="projects.html" target="_top" title="projects" alt="" coords="489,815,639,961">
-<area shape="rect" id="node9" href="label_tree_project.html" target="_top" title="label_tree_project" alt="" coords="803,472,1008,560">
-<area shape="rect" id="node10" href="label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="470,1051,658,1139">
-<area shape="rect" id="node12" href="maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="829,165,981,253">
-<area shape="rect" id="node13" href="volumes.html" target="_top" title="volumes" alt="" coords="494,183,634,271">
-<area shape="rect" id="node14" href="project_user.html" target="_top" title="project_user" alt="" coords="821,1063,990,1151">
-<area shape="rect" id="node15" href="project_volume.html" target="_top" title="project_volume" alt="" coords="811,328,1000,416">
-<area shape="rect" id="node16" href="reports.html" target="_top" title="reports" alt="" coords="498,5,630,93">
-<area shape="rect" id="node17" href="video_annotation_labels.html" target="_top" title="video_annotation_labels" alt="" coords="1351,367,1601,455">
-<area shape="rect" id="node18" href="video_annotations.html" target="_top" title="video_annotations" alt="" coords="1093,656,1307,832">
-<area shape="rect" id="node19" href="shapes.html" target="_top" title="shapes" alt="" coords="840,1168,971,1256">
-<area shape="rect" id="node20" href="videos.html" target="_top" title="videos" alt="" coords="765,683,1045,1045">
+<area shape="rect" id="node1" href="annotation_sessions.html" target="_top" title="annotation_sessions" alt="" coords="462,216,687,304">
+<area shape="rect" id="node2" href="volumes.html" target="_top" title="volumes" alt="" coords="219,433,396,609">
+<area shape="rect" id="node7" href="users.html" target="_top" title="users" alt="" coords="30,1020,150,1108">
+<area shape="rect" id="node15" href="media_types.html" target="_top" title="media_types" alt="" coords="5,465,175,553">
+<area shape="rect" id="node3" href="color_sort_sequences.html" target="_top" title="color_sort_sequences" alt="" coords="457,321,693,409">
+<area shape="rect" id="node4" href="geo_overlays.html" target="_top" title="geo_overlays" alt="" coords="488,795,661,883">
+<area shape="rect" id="node5" href="images.html" target="_top" title="images" alt="" coords="509,5,640,93">
+<area shape="rect" id="node6" href="maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="499,900,651,988">
+<area shape="rect" id="node8" href="project_volume.html" target="_top" title="project_volume" alt="" coords="480,111,669,199">
+<area shape="rect" id="node9" href="video_annotation_labels.html" target="_top" title="video_annotation_labels" alt="" coords="1011,860,1261,948">
+<area shape="rect" id="node10" href="video_annotations.html" target="_top" title="video_annotations" alt="" coords="753,628,967,804">
+<area shape="rect" id="node11" href="labels.html" target="_top" title="labels" alt="" coords="514,1005,635,1093">
+<area shape="rect" id="node12" href="shapes.html" target="_top" title="shapes" alt="" coords="509,689,640,777">
+<area shape="rect" id="node13" href="videos.html" target="_top" title="videos" alt="" coords="440,427,709,672">
+<area shape="rect" id="node14" href="video_labels.html" target="_top" title="video_labels" alt="" coords="776,933,944,1139">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/videos.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
