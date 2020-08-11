@@ -13,7 +13,7 @@ jobs:
         repository: biigle/core
         ref: dev-modules
         fetch-depth: 1
-        path: core
+        path: ../core
 
     - name: Validate composer.json and composer.lock
       run: composer validate
