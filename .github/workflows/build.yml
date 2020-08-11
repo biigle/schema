@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with:
         repository: biigle/core
         ref: dev-modules
@@ -60,7 +60,7 @@ jobs:
         COMPOSE_INTERACTIVE_NO_CLI: 1
       working-directory: ../core
 
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with:
         fetch-depth: 1
 
