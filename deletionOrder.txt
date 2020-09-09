@@ -16,12 +16,14 @@ reports
 project_volume
 label_tree_project
 label_tree_authorized_project
+federated_search_model_user
 annotation_session_user
 system_messages
 geo_overlays
 color_sort_sequences
 api_tokens
 video_annotations
+federated_search_models
 annotation_sessions
 maia_jobs
 image_annotations
@@ -39,5 +41,6 @@ report_types
 media_types
 maia_job_states
 label_sources
+federated_search_instances
 roles
 shapes

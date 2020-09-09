@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<database name="biigle" schema="public" type="PostgreSQL - 10.13">
+<database name="biigle" schema="public" type="PostgreSQL - 10.14">
    <sequences>
       <sequence increment="1" name="annotation_assistance_requests_id_seq" startValue="1"/>
       <sequence increment="1" name="annotation_labels_id_seq" startValue="1"/>
@@ -8,6 +8,8 @@
       <sequence increment="1" name="api_tokens_id_seq" startValue="1"/>
       <sequence increment="1" name="copria_color_sort_sequence_id_seq" startValue="1"/>
       <sequence increment="1" name="failed_jobs_id_seq" startValue="1"/>
+      <sequence increment="1" name="federated_search_instances_id_seq" startValue="1"/>
+      <sequence increment="1" name="federated_search_models_id_seq" startValue="1"/>
       <sequence increment="1" name="geo_overlays_id_seq" startValue="1"/>
       <sequence increment="1" name="image_labels_id_seq" startValue="1"/>
       <sequence increment="1" name="images_id_seq" startValue="1"/>
@@ -150,6 +152,60 @@
          <index name="failed_jobs_pkey" unique="true">
             <column ascending="true" name="id"/>
          </index>
+      </table>
+      <table name="federated_search_instances" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('federated_search_instances_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="federated_search_instance_id" foreignKey="federated_search_models_federated_search_instance_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="federated_search_models"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="url" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="local_token" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="remote_token" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="indexed_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="federated_search_instances_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="federated_search_instances_local_token_unique" unique="true">
+            <column ascending="true" name="local_token"/>
+         </index>
+         <index name="federated_search_instances_url_unique" unique="true">
+            <column ascending="true" name="url"/>
+         </index>
+      </table>
+      <table name="federated_search_model_user" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="federated_search_model_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="federated_search_model_user_federated_search_model_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="federated_search_models"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="federated_search_model_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <index name="federated_search_model_user_federated_search_model_id_user_id_u" unique="true">
+            <column ascending="true" name="federated_search_model_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table name="federated_search_models" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('federated_search_models_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="federated_search_model_id" foreignKey="federated_search_model_user_federated_search_model_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="federated_search_model_user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="type" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="url" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="attrs" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="federated_search_instance_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="federated_search_models_federated_search_instance_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="federated_search_instances"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="federated_search_models_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <checkConstraint constraint="(((type)::text = ANY ((ARRAY['Biigle\LabelTree'::character varying, 'Biigle\Project'::character varying, 'Biigle\Volume'::character varying])::text[])))" name="federated_search_models_type_check"/>
       </table>
       <table name="geo_overlays" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('geo_overlays_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
@@ -744,6 +800,7 @@
             <child column="user_id" foreignKey="annotation_assistance_requests_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="annotation_assistance_requests"/>
             <child column="user_id" foreignKey="annotation_session_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="annotation_session_user"/>
             <child column="owner_id" foreignKey="api_tokens_owner_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="api_tokens"/>
+            <child column="user_id" foreignKey="federated_search_model_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="federated_search_model_user"/>
             <child column="user_id" foreignKey="annotation_labels_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_annotation_labels"/>
             <child column="user_id" foreignKey="image_labels_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_labels"/>
             <child column="user_id" foreignKey="label_tree_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_user"/>

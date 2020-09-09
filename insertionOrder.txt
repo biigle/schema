@@ -1,5 +1,6 @@
 shapes
 roles
+federated_search_instances
 label_sources
 maia_job_states
 media_types
@@ -17,12 +18,14 @@ projects
 image_annotations
 maia_jobs
 annotation_sessions
+federated_search_models
 video_annotations
 api_tokens
 color_sort_sequences
 geo_overlays
 system_messages
 annotation_session_user
+federated_search_model_user
 label_tree_authorized_project
 label_tree_project
 project_volume
