@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="biigle" schema="public" type="PostgreSQL - 10.12">
+   <sequences>
+      <sequence increment="1" name="annotation_assistance_requests_id_seq" startValue="1"/>
+      <sequence increment="1" name="annotation_labels_id_seq" startValue="1"/>
+      <sequence increment="1" name="annotation_sessions_id_seq" startValue="1"/>
+      <sequence increment="1" name="annotations_id_seq" startValue="1"/>
+      <sequence increment="1" name="api_tokens_id_seq" startValue="1"/>
+      <sequence increment="1" name="copria_color_sort_sequence_id_seq" startValue="1"/>
+      <sequence increment="1" name="failed_jobs_id_seq" startValue="1"/>
+      <sequence increment="1" name="federated_search_instances_id_seq" startValue="1"/>
+      <sequence increment="1" name="federated_search_models_id_seq" startValue="1"/>
+      <sequence increment="1" name="geo_overlays_id_seq" startValue="1"/>
+      <sequence increment="1" name="image_labels_id_seq" startValue="1"/>
+      <sequence increment="1" name="images_id_seq" startValue="1"/>
+      <sequence increment="1" name="jobs_id_seq" startValue="1"/>
+      <sequence increment="1" name="label_sources_id_seq" startValue="1"/>
+      <sequence increment="1" name="label_tree_versions_id_seq" startValue="1"/>
+      <sequence increment="1" name="label_trees_id_seq" startValue="1"/>
+      <sequence increment="1" name="labels_id_seq" startValue="1"/>
+      <sequence increment="1" name="maia_annotation_candidates_id_seq" startValue="1"/>
+      <sequence increment="1" name="maia_job_states_id_seq" startValue="1"/>
+      <sequence increment="1" name="maia_jobs_id_seq" startValue="1"/>
+      <sequence increment="1" name="maia_training_proposals_id_seq" startValue="1"/>
+      <sequence increment="1" name="media_types_id_seq" startValue="1"/>
+      <sequence increment="1" name="projects_id_seq" startValue="1"/>
+      <sequence increment="1" name="report_types_id_seq" startValue="1"/>
+      <sequence increment="1" name="reports_id_seq" startValue="1"/>
+      <sequence increment="1" name="roles_id_seq" startValue="1"/>
+      <sequence increment="1" name="shapes_id_seq" startValue="1"/>
+      <sequence increment="1" name="system_message_types_id_seq" startValue="1"/>
+      <sequence increment="1" name="system_messages_id_seq" startValue="1"/>
+      <sequence increment="1" name="transects_id_seq" startValue="1"/>
+      <sequence increment="1" name="users_id_seq" startValue="1"/>
+      <sequence increment="1" name="video_annotation_labels_id_seq" startValue="1"/>
+      <sequence increment="1" name="video_annotations_id_seq" startValue="1"/>
+      <sequence increment="1" name="video_labels_id_seq" startValue="1"/>
+      <sequence increment="1" name="videos_id_seq" startValue="1"/>
+      <sequence increment="1" name="visibilities_id_seq" startValue="1"/>
+   </sequences>
+   <tables>
+      <table name="annotation_assistance_requests" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('annotation_assistance_requests_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="token" nullable="false" remarks="" size="64" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="request_text" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="response_text" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="request_labels" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="response_label_id" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="annotation_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="annotation_assistance_requests_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_annotations"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="user_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="annotation_assistance_requests_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="closed_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="receiver_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="annotation_assistance_requests_receiver_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="annotation_assistance_requests_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="annotation_assistance_requests_annotation_id_index" unique="false">
+            <column ascending="true" name="annotation_id"/>
+         </index>
+         <index name="annotation_assistance_requests_token_unique" unique="true">
+            <column ascending="true" name="token"/>
+         </index>
+      </table>
+      <table name="annotation_session_user" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="annotation_session_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="annotation_session_user_annotation_session_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="annotation_sessions"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="annotation_session_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <index name="annotation_session_user_annotation_session_id_user_id_unique" unique="true">
+            <column ascending="true" name="annotation_session_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table name="annotation_sessions" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('annotation_sessions_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="annotation_session_id" foreignKey="annotation_session_user_annotation_session_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="annotation_session_user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="256" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="volume_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="annotation_sessions_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="volumes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="starts_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="ends_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="8" name="hide_other_users_annotations" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="9" name="hide_own_annotations" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="annotation_sessions_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="annotation_sessions_transect_id_starts_at_ends_at_index" unique="false">
+            <column ascending="true" name="volume_id"/>
+            <column ascending="true" name="starts_at"/>
+            <column ascending="true" name="ends_at"/>
+         </index>
+      </table>
+      <table name="api_tokens" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('api_tokens_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="owner_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="api_tokens_owner_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="purpose" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="hash" nullable="false" remarks="" size="60" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="api_tokens_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="color_sort_sequences" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('copria_color_sort_sequence_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="volume_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="copria_color_sort_sequence_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="volumes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="color" nullable="false" remarks="" size="6" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="sequence" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="copria_color_sort_sequence_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="copria_color_sort_sequence_transect_id_color_index" unique="false">
+            <column ascending="true" name="volume_id"/>
+            <column ascending="true" name="color"/>
+         </index>
+         <index name="copria_color_sort_sequence_transect_id_color_unique" unique="true">
+            <column ascending="true" name="volume_id"/>
+            <column ascending="true" name="color"/>
+         </index>
+      </table>
+      <table name="failed_jobs" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('failed_jobs_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="connection" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="queue" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="payload" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="failed_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="exception" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="failed_jobs_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="federated_search_instances" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('federated_search_instances_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="federated_search_instance_id" foreignKey="federated_search_models_federated_search_instance_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="federated_search_models"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="url" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="local_token" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="remote_token" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="indexed_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="federated_search_instances_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="federated_search_instances_local_token_unique" unique="true">
+            <column ascending="true" name="local_token"/>
+         </index>
+         <index name="federated_search_instances_url_unique" unique="true">
+            <column ascending="true" name="url"/>
+         </index>
+      </table>
+      <table name="federated_search_model_user" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="federated_search_model_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="federated_search_model_user_federated_search_model_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="federated_search_models"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="federated_search_model_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <index name="federated_search_model_user_federated_search_model_id_user_id_u" unique="true">
+            <column ascending="true" name="federated_search_model_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table name="federated_search_models" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('federated_search_models_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="federated_search_model_id" foreignKey="federated_search_model_user_federated_search_model_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="federated_search_model_user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="type" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="url" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="attrs" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="federated_search_instance_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="federated_search_models_federated_search_instance_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="federated_search_instances"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="federated_search_models_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <checkConstraint constraint="(((type)::text = ANY (ARRAY[('Biigle\LabelTree'::character varying)::text, ('Biigle\Project'::character varying)::text, ('Biigle\Volume'::character varying)::text])))" name="federated_search_models_type_check"/>
+      </table>
+      <table name="geo_overlays" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('geo_overlays_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="top_left_lat" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="top_left_lng" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="bottom_right_lat" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="bottom_right_lng" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="volume_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="geo_overlays_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="volumes"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="geo_overlays_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="geo_overlays_volume_id_index" unique="false">
+            <column ascending="true" name="volume_id"/>
+         </index>
+      </table>
+      <table name="image_annotation_labels" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('annotation_labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="annotation_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="annotation_labels_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_annotations"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="label_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="annotation_labels_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="user_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="annotation_labels_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="confidence" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="annotation_labels_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="annotation_labels_annotation_id_index" unique="false">
+            <column ascending="true" name="annotation_id"/>
+         </index>
+         <index name="annotation_labels_annotation_id_label_id_user_id_unique" unique="true">
+            <column ascending="true" name="annotation_id"/>
+            <column ascending="true" name="label_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+         <index name="annotation_labels_label_id_index" unique="false">
+            <column ascending="true" name="label_id"/>
+         </index>
+         <index name="annotation_labels_user_id_index" unique="false">
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table name="image_annotations" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('annotations_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="annotation_id" foreignKey="annotation_assistance_requests_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="annotation_assistance_requests"/>
+            <child column="annotation_id" foreignKey="annotation_labels_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_annotation_labels"/>
+            <child column="annotation_id" foreignKey="maia_annotation_candidates_annotation_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_annotation_candidates"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="image_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="annotations_image_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="images"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="shape_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="annotations_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="shapes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="created_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="updated_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="'[]'::json" digits="0" id="5" name="points" nullable="false" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="annotations_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="annotations_image_id_index" unique="false">
+            <column ascending="true" name="image_id"/>
+         </index>
+      </table>
+      <table name="image_labels" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('image_labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="image_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="image_labels_image_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="images"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="label_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="image_labels_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="user_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="image_labels_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="image_labels_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="image_labels_image_id_index" unique="false">
+            <column ascending="true" name="image_id"/>
+         </index>
+         <index name="image_labels_image_id_label_id_unique" unique="true">
+            <column ascending="true" name="image_id"/>
+            <column ascending="true" name="label_id"/>
+         </index>
+         <index name="image_labels_label_id_index" unique="false">
+            <column ascending="true" name="label_id"/>
+         </index>
+      </table>
+      <table name="images" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('images_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="image_id" foreignKey="annotations_image_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_annotations"/>
+            <child column="image_id" foreignKey="image_labels_image_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_labels"/>
+            <child column="image_id" foreignKey="maia_annotation_candidates_image_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="maia_annotation_candidates"/>
+            <child column="image_id" foreignKey="maia_training_proposals_image_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="maia_training_proposals"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="filename" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="volume_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="images_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="volumes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="attrs" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="lat" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="lng" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="taken_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="8" name="tiled" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="images_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="images_filename_transect_id_unique" unique="true">
+            <column ascending="true" name="filename"/>
+            <column ascending="true" name="volume_id"/>
+         </index>
+         <index name="images_transect_id_index" unique="false">
+            <column ascending="true" name="volume_id"/>
+         </index>
+         <index name="images_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+      </table>
+      <table name="jobs" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('jobs_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="queue" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="payload" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="attempts" nullable="false" remarks="" size="5" type="int2" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="reserved_at" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="available_at" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="created_at" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="jobs_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="jobs_queue_reserved_at_index" unique="false">
+            <column ascending="true" name="queue"/>
+            <column ascending="true" name="reserved_at"/>
+         </index>
+      </table>
+      <table name="label_sources" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('label_sources_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="label_source_id" foreignKey="labels_label_source_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="128" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="label_sources_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="label_sources_name_unique" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table name="label_tree_authorized_project" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="label_tree_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="label_tree_authorized_project_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_trees"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="project_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="label_tree_authorized_project_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
+         </column>
+         <index name="label_tree_authorized_project_label_tree_id_project_id_unique" unique="true">
+            <column ascending="true" name="label_tree_id"/>
+            <column ascending="true" name="project_id"/>
+         </index>
+      </table>
+      <table name="label_tree_project" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="label_tree_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="label_tree_project_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_trees"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="project_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="label_tree_project_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
+         </column>
+         <index name="label_tree_project_label_tree_id_project_id_unique" unique="true">
+            <column ascending="true" name="label_tree_id"/>
+            <column ascending="true" name="project_id"/>
+         </index>
+      </table>
+      <table name="label_tree_user" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="label_tree_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="label_tree_user_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_trees"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="label_tree_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="role_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="label_tree_user_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="roles"/>
+         </column>
+         <index name="label_tree_user_label_tree_id_user_id_unique" unique="true">
+            <column ascending="true" name="label_tree_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table name="label_tree_versions" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('label_tree_versions_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="version_id" foreignKey="label_trees_version_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_trees"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="256" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="label_tree_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="label_tree_versions_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_trees"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="doi" nullable="true" remarks="" size="512" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="label_tree_versions_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="label_tree_versions_label_tree_id_index" unique="false">
+            <column ascending="true" name="label_tree_id"/>
+         </index>
+         <index name="label_tree_versions_name_label_tree_id_unique" unique="true">
+            <column ascending="true" name="name"/>
+            <column ascending="true" name="label_tree_id"/>
+         </index>
+      </table>
+      <table name="label_trees" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('label_trees_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="label_tree_id" foreignKey="label_tree_authorized_project_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_authorized_project"/>
+            <child column="label_tree_id" foreignKey="label_tree_project_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_project"/>
+            <child column="label_tree_id" foreignKey="label_tree_user_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_user"/>
+            <child column="label_tree_id" foreignKey="label_tree_versions_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_versions"/>
+            <child column="label_tree_id" foreignKey="labels_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="256" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="visibility_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="label_trees_visibility_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="visibilities"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="version_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="label_trees_version_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_versions"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="label_trees_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="label_trees_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+         <index name="label_trees_version_id_unique" unique="true">
+            <column ascending="true" name="version_id"/>
+         </index>
+      </table>
+      <table name="labels" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="label_id" foreignKey="annotation_labels_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_annotation_labels"/>
+            <child column="label_id" foreignKey="image_labels_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_labels"/>
+            <child column="parent_id" foreignKey="labels_parent_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="labels"/>
+            <child column="label_id" foreignKey="maia_annotation_candidates_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_annotation_candidates"/>
+            <child column="label_id" foreignKey="video_annotation_labels_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="video_annotation_labels"/>
+            <child column="label_id" foreignKey="video_labels_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="video_labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="parent_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="labels_parent_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="'0099ff'::character varying" digits="0" id="3" name="color" nullable="false" remarks="" size="6" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="label_tree_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="labels_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_trees"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="source_id" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="label_source_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="labels_label_source_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="label_sources"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="labels_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="labels_label_tree_id_index" unique="false">
+            <column ascending="true" name="label_tree_id"/>
+         </index>
+         <index name="labels_name_index" unique="false">
+            <column ascending="true" name="name"/>
+         </index>
+         <index name="labels_parent_id_index" unique="false">
+            <column ascending="true" name="parent_id"/>
+         </index>
+         <index name="labels_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+      </table>
+      <table name="maia_annotation_candidates" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('maia_annotation_candidates_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="points" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="score" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="image_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="maia_annotation_candidates_image_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="images"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="shape_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="maia_annotation_candidates_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="shapes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="job_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="maia_annotation_candidates_job_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="maia_jobs"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="label_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="maia_annotation_candidates_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="annotation_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="maia_annotation_candidates_annotation_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_annotations"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="maia_annotation_candidates_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="maia_annotation_candidates_annotation_id_index" unique="false">
+            <column ascending="true" name="annotation_id"/>
+         </index>
+         <index name="maia_annotation_candidates_image_id_index" unique="false">
+            <column ascending="true" name="image_id"/>
+         </index>
+         <index name="maia_annotation_candidates_job_id_index" unique="false">
+            <column ascending="true" name="job_id"/>
+         </index>
+         <index name="maia_annotation_candidates_label_id_index" unique="false">
+            <column ascending="true" name="label_id"/>
+         </index>
+      </table>
+      <table name="maia_job_states" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('maia_job_states_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="state_id" foreignKey="maia_jobs_state_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_jobs"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="64" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="maia_job_states_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="maia_jobs" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('maia_jobs_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="job_id" foreignKey="maia_annotation_candidates_job_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="maia_annotation_candidates"/>
+            <child column="job_id" foreignKey="maia_training_proposals_job_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="maia_training_proposals"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="volume_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="maia_jobs_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="volumes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="maia_jobs_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="state_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="maia_jobs_state_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_job_states"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="attrs" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="maia_jobs_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="maia_jobs_volume_id_index" unique="false">
+            <column ascending="true" name="volume_id"/>
+         </index>
+      </table>
+      <table name="maia_training_proposals" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('maia_training_proposals_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="points" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="3" name="selected" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="image_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="maia_training_proposals_image_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="images"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="shape_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="maia_training_proposals_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="shapes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="job_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="maia_training_proposals_job_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="maia_jobs"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="maia_training_proposals_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="maia_training_proposals_image_id_index" unique="false">
+            <column ascending="true" name="image_id"/>
+         </index>
+         <index name="maia_training_proposals_job_id_index" unique="false">
+            <column ascending="true" name="job_id"/>
+         </index>
+      </table>
+      <table name="media_types" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('media_types_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="media_type_id" foreignKey="transects_media_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="volumes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="media_types_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="media_types_name_index" unique="false">
+            <column ascending="true" name="name"/>
+         </index>
+         <index name="media_types_name_unique" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table name="migrations" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="migration" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="batch" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+      </table>
+      <table name="notifications" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="type" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="notifiable_id" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="notifiable_type" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="data" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="read_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="notifications_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="notifications_notifiable_id_notifiable_type_index" unique="false">
+            <column ascending="true" name="notifiable_id"/>
+            <column ascending="true" name="notifiable_type"/>
+         </index>
+      </table>
+      <table name="password_resets" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="email" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="token" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="created_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <index name="password_resets_email_index" unique="false">
+            <column ascending="true" name="email"/>
+         </index>
+         <index name="password_resets_token_index" unique="false">
+            <column ascending="true" name="token"/>
+         </index>
+      </table>
+      <table name="project_user" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="project_role_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="project_user_project_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="roles"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="project_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="project_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="project_user_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
+         </column>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="3" name="pinned" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <index name="project_user_user_id_project_id_unique" unique="true">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="project_id"/>
+         </index>
+      </table>
+      <table name="project_volume" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="volume_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="project_transect_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="volumes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="project_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="project_transect_project_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="projects"/>
+         </column>
+         <index name="project_transect_transect_id_project_id_unique" unique="true">
+            <column ascending="true" name="volume_id"/>
+            <column ascending="true" name="project_id"/>
+         </index>
+      </table>
+      <table name="projects" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('projects_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="project_id" foreignKey="label_tree_authorized_project_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_authorized_project"/>
+            <child column="project_id" foreignKey="label_tree_project_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_project"/>
+            <child column="project_id" foreignKey="project_user_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="project_user"/>
+            <child column="project_id" foreignKey="project_transect_project_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="project_volume"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="creator_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="projects_creator_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="created_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="updated_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="projects_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="report_types" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('report_types_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="type_id" foreignKey="reports_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="reports"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="128" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="report_types_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="report_types_name_index" unique="false">
+            <column ascending="true" name="name"/>
+         </index>
+         <index name="report_types_name_unique" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table name="reports" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('reports_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="reports_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="type_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="reports_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="report_types"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="source_id" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="source_type" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="source_name" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="options" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="ready_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="reports_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="reports_source_id_source_type_index" unique="false">
+            <column ascending="true" name="source_id"/>
+            <column ascending="true" name="source_type"/>
+         </index>
+      </table>
+      <table name="roles" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('roles_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="role_id" foreignKey="label_tree_user_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="label_tree_user"/>
+            <child column="project_role_id" foreignKey="project_user_project_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="project_user"/>
+            <child column="role_id" foreignKey="users_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="128" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="roles_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="roles_name_index" unique="false">
+            <column ascending="true" name="name"/>
+         </index>
+         <index name="roles_name_unique" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table name="shapes" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('shapes_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="shape_id" foreignKey="annotations_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_annotations"/>
+            <child column="shape_id" foreignKey="maia_annotation_candidates_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_annotation_candidates"/>
+            <child column="shape_id" foreignKey="maia_training_proposals_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_training_proposals"/>
+            <child column="shape_id" foreignKey="video_annotations_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="video_annotations"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="256" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="shapes_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="system_message_types" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('system_message_types_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="type_id" foreignKey="system_messages_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="system_messages"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="128" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="system_message_types_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="system_message_types_name_unique" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table name="system_messages" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('system_messages_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="published_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="body" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="title" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="type_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="system_messages_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="system_message_types"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="system_messages_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="users" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('users_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="receiver_id" foreignKey="annotation_assistance_requests_receiver_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="annotation_assistance_requests"/>
+            <child column="user_id" foreignKey="annotation_assistance_requests_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="annotation_assistance_requests"/>
+            <child column="user_id" foreignKey="annotation_session_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="annotation_session_user"/>
+            <child column="owner_id" foreignKey="api_tokens_owner_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="api_tokens"/>
+            <child column="user_id" foreignKey="federated_search_model_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="federated_search_model_user"/>
+            <child column="user_id" foreignKey="annotation_labels_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_annotation_labels"/>
+            <child column="user_id" foreignKey="image_labels_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_labels"/>
+            <child column="user_id" foreignKey="label_tree_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_user"/>
+            <child column="user_id" foreignKey="maia_jobs_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_jobs"/>
+            <child column="user_id" foreignKey="project_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="project_user"/>
+            <child column="creator_id" foreignKey="projects_creator_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="projects"/>
+            <child column="user_id" foreignKey="reports_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="reports"/>
+            <child column="user_id" foreignKey="video_annotation_labels_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="video_annotation_labels"/>
+            <child column="user_id" foreignKey="video_labels_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="video_labels"/>
+            <child column="creator_id" foreignKey="transects_creator_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="volumes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="firstname" nullable="false" remarks="" size="128" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="lastname" nullable="false" remarks="" size="128" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="password" nullable="false" remarks="" size="60" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="email" nullable="false" remarks="" size="256" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="role_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="users_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="roles"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="remember_token" nullable="true" remarks="" size="100" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="created_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="updated_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="login_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="settings" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="affiliation" nullable="true" remarks="" size="256" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="users_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="users_email_index" unique="false">
+            <column ascending="true" name="email"/>
+         </index>
+         <index name="users_email_unique" unique="true"/>
+         <index name="users_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+      </table>
+      <table name="video_annotation_labels" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('video_annotation_labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="annotation_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="video_annotation_labels_video_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="video_annotations"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="label_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="video_annotation_labels_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="user_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="video_annotation_labels_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="video_annotation_labels_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="video_annotation_labels_label_id_index" unique="false">
+            <column ascending="true" name="label_id"/>
+         </index>
+         <index name="video_annotation_labels_user_id_index" unique="false">
+            <column ascending="true" name="user_id"/>
+         </index>
+         <index name="video_annotation_labels_video_annotation_id_index" unique="false">
+            <column ascending="true" name="annotation_id"/>
+         </index>
+         <index name="video_annotation_labels_video_annotation_id_label_id_user_id_un" unique="true">
+            <column ascending="true" name="annotation_id"/>
+            <column ascending="true" name="label_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+      </table>
+      <table name="video_annotations" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('video_annotations_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="annotation_id" foreignKey="video_annotation_labels_video_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="video_annotation_labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="frames" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="points" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="video_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="video_annotations_video_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="videos"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="shape_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="video_annotations_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="shapes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="video_annotations_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="video_annotations_video_id_index" unique="false">
+            <column ascending="true" name="video_id"/>
+         </index>
+      </table>
+      <table name="video_labels" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('video_labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="video_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="video_labels_video_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="videos"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="label_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="video_labels_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="user_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="video_labels_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="video_labels_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="video_labels_video_id_label_id_unique" unique="true">
+            <column ascending="true" name="video_id"/>
+            <column ascending="true" name="label_id"/>
+         </index>
+      </table>
+      <table name="videos" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('videos_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="video_id" foreignKey="video_annotations_video_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="video_annotations"/>
+            <child column="video_id" foreignKey="video_labels_video_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="video_labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="attrs" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="'0'::double precision" digits="17" id="3" name="duration" nullable="false" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="volume_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="videos_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="volumes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="filename" nullable="true" remarks="" size="512" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="videos_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="videos_filename_volume_id_unique" unique="true">
+            <column ascending="true" name="filename"/>
+            <column ascending="true" name="volume_id"/>
+         </index>
+         <index name="videos_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+         <index name="videos_volume_id_index" unique="false">
+            <column ascending="true" name="volume_id"/>
+         </index>
+      </table>
+      <table name="visibilities" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('visibilities_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="visibility_id" foreignKey="label_trees_visibility_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="label_trees"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="128" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="visibilities_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="visibilities_name_index" unique="false">
+            <column ascending="true" name="name"/>
+         </index>
+         <index name="visibilities_name_unique" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table name="volumes" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('transects_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="volume_id" foreignKey="annotation_sessions_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="annotation_sessions"/>
+            <child column="volume_id" foreignKey="copria_color_sort_sequence_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="color_sort_sequences"/>
+            <child column="volume_id" foreignKey="geo_overlays_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="geo_overlays"/>
+            <child column="volume_id" foreignKey="images_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="images"/>
+            <child column="volume_id" foreignKey="maia_jobs_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="maia_jobs"/>
+            <child column="volume_id" foreignKey="project_transect_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="project_volume"/>
+            <child column="volume_id" foreignKey="videos_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="videos"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="media_type_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="transects_media_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="media_types"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="creator_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="transects_creator_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="created_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="updated_at" nullable="false" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="url" nullable="false" remarks="" size="256" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="attrs" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="transects_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+   </tables>
+</database>

@@ -73,15 +73,18 @@ jobs:
     - name: Install graphviz
       run: sudo apt-get install -y graphviz
 
+    - name: Clean output directory
+      run: rm -r docs
+
     - name: Run Schemaspy
-      run: java -jar schemaspy-6.1.0.jar -dp postgresql-42.2.12.jar -o .
+      run: java -jar schemaspy-6.1.0.jar -dp postgresql-42.2.12.jar -o docs
 
     - name: Commit changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git commit -am "Update schema $(date -Iseconds)"
+        git commit -m "Update schema $(date -Iseconds)"
 
     - name: Push changes
       uses: ad-m/github-push-action@v0.5.0
