@@ -80,7 +80,7 @@
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <i class="ion ion-key"></i>
-                            <h3 class="box-title">66 Foreign Key Constraints</h3>
+                            <h3 class="box-title">65 Foreign Key Constraints</h3>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -103,24 +103,6 @@
                                             <table border='0' cellspacing='0' cellpadding='0'>
                                                 <tr>
                                                     <td><a href='tables/color_sort_sequences.html'>color_sort_sequences</a><span>.volume_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/volumes.html'>volumes</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>geo_overlays_volume_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/geo_overlays.html'>geo_overlays</a><span>.volume_id</span></td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -1311,7 +1293,7 @@
                                     <tr>
                                         <td><a href='tables/federated_search_models.html'>federated_search_models</a></td>
                                         <td>federated_search_models_type_check</td>
-                                        <td>(((type)::text = ANY (ARRAY[(&#39;Biigle\LabelTree&#39;::character varying)::text, (&#39;Biigle\Project&#39;::character varying)::text, (&#39;Biigle\Volume&#39;::character varying)::text])))</td>
+                                        <td>(((type)::text = ANY ((ARRAY[&#39;Biigle\LabelTree&#39;::character varying, &#39;Biigle\Project&#39;::character varying, &#39;Biigle\Volume&#39;::character varying])::text[])))</td>
                                     </tr>
                                 </tbody>
                             </table>

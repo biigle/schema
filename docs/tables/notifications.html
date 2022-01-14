@@ -137,9 +137,9 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="notifiable_id">notifiable_id</span></td>
-                                    <td>int4</td>
-                                    <td>10</td>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="notifiable_type">notifiable_type</span></td>
+                                    <td>varchar</td>
+                                    <td>255</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
@@ -154,9 +154,9 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="notifiable_type">notifiable_type</span></td>
-                                    <td>varchar</td>
-                                    <td>255</td>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="notifiable_id">notifiable_id</span></td>
+                                    <td>int8</td>
+                                    <td>19</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
@@ -272,7 +272,7 @@
                                     <td title='Indexed'>notifications_notifiable_id_notifiable_type_index</td>
                                     <td>Performance</td>
                                     <td><span title='Ascending'>Asc</span>/<span title='Ascending'>Asc</span></td>
-                                    <td>notifiable_id + notifiable_type</td>
+                                    <td>notifiable_type + notifiable_id</td>
                                 </tr>
                                 </tbody>
                             </table>
