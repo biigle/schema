@@ -39,11 +39,6 @@ jobs:
       run: composer update --no-ansi --no-interaction --no-scripts --no-suggest --prefer-source --ignore-platform-reqs biigle/*
       working-directory: ../core
 
-    - name: Docker login
-      run: docker login ghcr.io -u $GITHUB_ACTOR -p $GITHUB_TOKEN
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
     - name: Fetch base images
       run: |
         docker pull ghcr.io/biigle/app:latest
