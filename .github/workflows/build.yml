@@ -39,10 +39,9 @@ jobs:
       run: composer update --no-ansi --no-interaction --no-scripts --no-suggest --prefer-source --ignore-platform-reqs biigle/*
       working-directory: ../core
 
-    - name: Docker login
-      run: docker login ghcr.io -u $GITHUB_ACTOR -p $GITHUB_TOKEN
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Shutdown Ubuntu PostgreSQL
+      run: sudo lsof -i -P -n | grep LISTEN
+      #run: sudo service postgres stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
 
     - name: Fetch base images
       run: |
