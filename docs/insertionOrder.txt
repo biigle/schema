@@ -39,6 +39,7 @@ video_annotation_labels
 video_labels
 maia_annotation_candidates
 failed_jobs
+job_batches
 jobs
 migrations
 notifications

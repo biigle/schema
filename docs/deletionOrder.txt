@@ -2,6 +2,7 @@ password_resets
 notifications
 migrations
 jobs
+job_batches
 failed_jobs
 maia_annotation_candidates
 video_labels
