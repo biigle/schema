@@ -20,6 +20,7 @@ label_tree_authorized_project
 federated_search_model_user
 annotation_session_user
 system_messages
+storage_requests
 color_sort_sequences
 api_tokens
 video_annotations

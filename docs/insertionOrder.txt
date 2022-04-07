@@ -22,6 +22,7 @@ federated_search_models
 video_annotations
 api_tokens
 color_sort_sequences
+storage_requests
 system_messages
 annotation_session_user
 federated_search_model_user
