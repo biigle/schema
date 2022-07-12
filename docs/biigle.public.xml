@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<database name="biigle" schema="public" type="PostgreSQL - 10.20">
+<database name="biigle" schema="public" type="PostgreSQL - 14.4">
    <sequences>
       <sequence increment="1" name="annotation_assistance_requests_id_seq" startValue="1"/>
       <sequence increment="1" name="annotation_labels_id_seq" startValue="1"/>
@@ -28,6 +28,7 @@
       <sequence increment="1" name="reports_id_seq" startValue="1"/>
       <sequence increment="1" name="roles_id_seq" startValue="1"/>
       <sequence increment="1" name="shapes_id_seq" startValue="1"/>
+      <sequence increment="1" name="storage_request_files_id_seq" startValue="1"/>
       <sequence increment="1" name="storage_requests_id_seq" startValue="1"/>
       <sequence increment="1" name="system_message_types_id_seq" startValue="1"/>
       <sequence increment="1" name="system_messages_id_seq" startValue="1"/>
@@ -768,16 +769,38 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
+      <table name="storage_request_files" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('storage_request_files_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="storage_request_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="storage_request_files_storage_request_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="storage_requests"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="path" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="size" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="received_chunks" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="total_chunks" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="storage_request_files_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="storage_request_files_path_storage_request_id_unique" unique="true">
+            <column ascending="true" name="path"/>
+            <column ascending="true" name="storage_request_id"/>
+         </index>
+         <index name="storage_request_files_storage_request_id_index" unique="false">
+            <column ascending="true" name="storage_request_id"/>
+         </index>
+      </table>
       <table name="storage_requests" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="true" defaultValue="nextval('storage_requests_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="true" defaultValue="nextval('storage_requests_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="storage_request_id" foreignKey="storage_request_files_storage_request_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="storage_request_files"/>
+         </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="storage_requests_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
          </column>
-         <column autoUpdated="false" defaultValue="''::text" digits="0" id="2" name="files" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="submitted_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="expires_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="submitted_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="expires_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="storage_requests_pkey" unique="true">
             <column ascending="true" name="id"/>

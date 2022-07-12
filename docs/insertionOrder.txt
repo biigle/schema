@@ -19,10 +19,11 @@ image_annotations
 maia_jobs
 annotation_sessions
 federated_search_models
+storage_requests
 video_annotations
 api_tokens
 color_sort_sequences
-storage_requests
+storage_request_files
 system_messages
 annotation_session_user
 federated_search_model_user

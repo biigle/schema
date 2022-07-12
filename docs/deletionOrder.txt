@@ -20,10 +20,11 @@ label_tree_authorized_project
 federated_search_model_user
 annotation_session_user
 system_messages
-storage_requests
+storage_request_files
 color_sort_sequences
 api_tokens
 video_annotations
+storage_requests
 federated_search_models
 annotation_sessions
 maia_jobs
