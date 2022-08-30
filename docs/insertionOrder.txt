@@ -44,5 +44,7 @@ failed_jobs
 job_batches
 jobs
 migrations
+newsletter_subscribers
+newsletters
 notifications
 password_resets

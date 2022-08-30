@@ -1,5 +1,7 @@
 password_resets
 notifications
+newsletters
+newsletter_subscribers
 migrations
 jobs
 job_batches
