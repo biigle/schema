@@ -5,7 +5,6 @@ label_sources
 maia_job_states
 media_types
 report_types
-system_message_types
 visibilities
 users
 volumes
@@ -24,7 +23,6 @@ video_annotations
 api_tokens
 color_sort_sequences
 storage_request_files
-system_messages
 annotation_session_user
 federated_search_model_user
 label_tree_authorized_project
@@ -40,6 +38,7 @@ project_user
 video_annotation_labels
 video_labels
 maia_annotation_candidates
+announcements
 failed_jobs
 job_batches
 jobs
