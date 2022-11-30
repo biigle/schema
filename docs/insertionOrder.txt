@@ -1,5 +1,5 @@
-shapes
 roles
+shapes
 federated_search_instances
 label_sources
 maia_job_states
@@ -27,6 +27,7 @@ annotation_session_user
 federated_search_model_user
 label_tree_authorized_project
 label_tree_project
+project_invitations
 project_volume
 reports
 annotation_assistance_requests

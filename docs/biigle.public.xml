@@ -25,6 +25,7 @@
       <sequence increment="1" name="migrations_id_seq" startValue="1"/>
       <sequence increment="1" name="newsletter_subscribers_id_seq" startValue="1"/>
       <sequence increment="1" name="newsletters_id_seq" startValue="1"/>
+      <sequence increment="1" name="project_invitations_id_seq" startValue="1"/>
       <sequence increment="1" name="projects_id_seq" startValue="1"/>
       <sequence increment="1" name="report_types_id_seq" startValue="1"/>
       <sequence increment="1" name="reports_id_seq" startValue="1"/>
@@ -690,6 +691,29 @@
             <column ascending="true" name="email"/>
          </index>
       </table>
+      <table name="project_invitations" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('project_invitations_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="expires_at" nullable="false" remarks="" size="28" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="current_uses" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="max_uses" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="project_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="project_invitations_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="role_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
+            <parent column="id" foreignKey="project_invitations_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="roles"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="project_invitations_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="project_invitations_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+         <checkConstraint constraint="(((max_uses IS NULL) OR (current_uses &lt;= max_uses)))" name="check_max_uses"/>
+      </table>
       <table name="project_user" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="project_role_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="project_user_project_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="roles"/>
@@ -722,6 +746,7 @@
          <column autoUpdated="true" defaultValue="nextval('projects_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="project_id" foreignKey="label_tree_authorized_project_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_authorized_project"/>
             <child column="project_id" foreignKey="label_tree_project_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_project"/>
+            <child column="project_id" foreignKey="project_invitations_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="project_invitations"/>
             <child column="project_id" foreignKey="project_user_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="project_user"/>
             <child column="project_id" foreignKey="project_transect_project_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="project_volume"/>
          </column>
@@ -780,6 +805,7 @@
       <table name="roles" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('roles_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="role_id" foreignKey="label_tree_user_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="label_tree_user"/>
+            <child column="role_id" foreignKey="project_invitations_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="project_invitations"/>
             <child column="project_role_id" foreignKey="project_user_project_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="project_user"/>
             <child column="role_id" foreignKey="users_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="users"/>
          </column>

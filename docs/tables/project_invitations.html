@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>label_tree_project - biigle Database</title>
+        <title>project_invitations - biigle Database</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -73,7 +73,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>label_tree_project</h1><br />
+                    <h1>project_invitations</h1><br />
                 </section>
                 <!-- Main content -->
                 <section class="content">
@@ -103,9 +103,60 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="label_tree_id">label_tree_id</span></td>
-                                    <td>int4</td>
-                                    <td>10</td>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="id">id</span></td>
+                                    <td>bigserial</td>
+                                    <td>19</td>
+                                    <td title=''></td>
+                                    <td title='Automatically updated by the database'>√</td>
+                                    <td>nextval(&#39;project_invitations_id_seq&#39;::regclass)</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="created_at">created_at</span></td>
+                                    <td>timestamp</td>
+                                    <td>22</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="updated_at">updated_at</span></td>
+                                    <td>timestamp</td>
+                                    <td>22</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="expires_at">expires_at</span></td>
+                                    <td>timestamptz</td>
+                                    <td>28</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
@@ -115,10 +166,57 @@
                                     </td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
-                                            <tr>
-                                                <td title="label_tree_project.label_tree_id references label_trees.id via label_tree_project_label_tree_id_foreign"><a href='label_trees.html'>label_trees</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">label_tree_project_label_tree_id_foreign<span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
-                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="uuid">uuid</span></td>
+                                    <td>uuid</td>
+                                    <td>2147483647</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="current_uses">current_uses</span></td>
+                                    <td>int4</td>
+                                    <td>10</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>0</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="max_uses">max_uses</span></td>
+                                    <td>int4</td>
+                                    <td>10</td>
+                                    <td title='nullable'>√</td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
                                     <td></td>
@@ -137,8 +235,29 @@
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
-                                                <td title="label_tree_project.project_id references projects.id via label_tree_project_project_id_foreign"><a href='projects.html'>projects</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">label_tree_project_project_id_foreign<span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                                <td title="project_invitations.project_id references projects.id via project_invitations_project_id_foreign"><a href='projects.html'>projects</a><span class='relatedKey'>.id</span></td>
+                                                <td class="constraint detail">project_invitations_project_id_foreign<span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="role_id">role_id</span></td>
+                                    <td>int4</td>
+                                    <td>10</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="project_invitations.role_id references roles.id via project_invitations_role_id_foreign"><a href='roles.html'>roles</a><span class='relatedKey'>.id</span></td>
+                                                <td class="constraint detail">project_invitations_role_id_foreign<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
@@ -169,14 +288,46 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> label_tree_project_label_tree_id_project_id_unique</td>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey'></i> project_invitations_pkey</td>
+                                    <td>Primary key</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>id</td>
+                                </tr>
+                                <tr>
+                                    <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> project_invitations_uuid_unique</td>
                                     <td>Must be unique</td>
-                                    <td><span title='Ascending'>Asc</span>/<span title='Ascending'>Asc</span></td>
-                                    <td>label_tree_id + project_id</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>uuid</td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div><!-- /.box-body -->
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-sitemap"></i>
+                            <h3 class="box-title">Check Constraints</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table id="check_table" class="table table-bordered table-striped dataTable" role="grid">
+                                <thead align='left'>
+                                <tr>
+                                    <th>Constraint Name</th>
+                                    <th>Constraint</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>check_max_uses</td>
+                                    <td>(((max_uses IS NULL) OR (current_uses &lt;= max_uses)))</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -197,28 +348,25 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="label_tree_project.html" target="_top" title="label_tree_project" alt="" coords="229,100,511,228">
-<area shape="rect" id="node2" href="label_trees.html" target="_top" title="label_trees" alt="" coords="5,5,185,211">
-<area shape="rect" id="node3" href="projects.html" target="_top" title="projects" alt="" coords="17,228,174,375">
+<area shape="rect" id="node1" href="project_invitations.html" target="_top" title="project_invitations" alt="" coords="207,5,571,339">
+<area shape="rect" id="node2" href="projects.html" target="_top" title="projects" alt="" coords="5,145,163,292">
+<area shape="rect" id="node3" href="roles.html" target="_top" title="roles" alt="" coords="19,309,149,432">
 </map>
-                                        <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/label_tree_project.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                        <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/project_invitations.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="label_tree_authorized_project.html" target="_top" title="label_tree_authorized_project" alt="" coords="533,216,864,304">
-<area shape="rect" id="node2" href="label_trees.html" target="_top" title="label_trees" alt="" coords="309,133,489,339">
-<area shape="rect" id="node3" href="projects.html" target="_top" title="projects" alt="" coords="320,464,478,611">
-<area shape="rect" id="node7" href="label_tree_versions.html" target="_top" title="label_tree_versions" alt="" coords="17,224,265,312">
-<area shape="rect" id="node8" href="visibilities.html" target="_top" title="visibilities" alt="" coords="54,119,228,207">
-<area shape="rect" id="node6" href="users.html" target="_top" title="users" alt="" coords="74,496,208,584">
-<area shape="rect" id="node4" href="label_tree_project.html" target="_top" title="label_tree_project" alt="" coords="558,321,839,449">
-<area shape="rect" id="node5" href="label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="591,111,806,199">
-<area shape="rect" id="node9" href="labels.html" target="_top" title="labels" alt="" coords="629,5,768,93">
-<area shape="rect" id="node10" href="project_invitations.html" target="_top" title="project_invitations" alt="" coords="577,467,820,555">
-<area shape="rect" id="node11" href="project_user.html" target="_top" title="project_user" alt="" coords="603,677,794,765">
-<area shape="rect" id="node12" href="project_volume.html" target="_top" title="project_volume" alt="" coords="591,572,806,660">
+<area shape="rect" id="node1" href="label_tree_authorized_project.html" target="_top" title="label_tree_authorized_project" alt="" coords="634,111,965,199">
+<area shape="rect" id="node2" href="projects.html" target="_top" title="projects" alt="" coords="387,164,545,311">
+<area shape="rect" id="node6" href="users.html" target="_top" title="users" alt="" coords="180,212,315,300">
+<area shape="rect" id="node3" href="label_tree_project.html" target="_top" title="label_tree_project" alt="" coords="681,216,917,304">
+<area shape="rect" id="node4" href="label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="359,328,573,416">
+<area shape="rect" id="node5" href="roles.html" target="_top" title="roles" alt="" coords="5,252,136,375">
+<area shape="rect" id="node7" href="project_invitations.html" target="_top" title="project_invitations" alt="" coords="617,427,981,760">
+<area shape="rect" id="node8" href="project_user.html" target="_top" title="project_user" alt="" coords="704,5,895,93">
+<area shape="rect" id="node9" href="project_volume.html" target="_top" title="project_volume" alt="" coords="692,321,907,409">
 </map>
-                                        <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/label_tree_project.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                        <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/project_invitations.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                 </div>
                             </div>

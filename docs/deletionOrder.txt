@@ -18,6 +18,7 @@ image_annotation_labels
 annotation_assistance_requests
 reports
 project_volume
+project_invitations
 label_tree_project
 label_tree_authorized_project
 federated_search_model_user
@@ -45,5 +46,5 @@ media_types
 maia_job_states
 label_sources
 federated_search_instances
-roles
 shapes
+roles

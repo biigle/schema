@@ -80,7 +80,7 @@
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <i class="ion ion-key"></i>
-                            <h3 class="box-title">66 Foreign Key Constraints</h3>
+                            <h3 class="box-title">68 Foreign Key Constraints</h3>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -890,6 +890,42 @@
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
                                     </tr>
                                     <tr>
+                                        <td>project_invitations_project_id_foreign</td>
+                                        <td>
+                                            <table border='0' cellspacing='0' cellpadding='0'>
+                                                <tr>
+                                                    <td><a href='tables/project_invitations.html'>project_invitations</a><span>.project_id</span></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table border='0' cellspacing='0' cellpadding='0'>
+                                                <tr>
+                                                    <td><a href='tables/projects.html'>projects</a><span>.id</span></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>project_invitations_role_id_foreign</td>
+                                        <td>
+                                            <table border='0' cellspacing='0' cellpadding='0'>
+                                                <tr>
+                                                    <td><a href='tables/project_invitations.html'>project_invitations</a><span>.role_id</span></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table border='0' cellspacing='0' cellpadding='0'>
+                                                <tr>
+                                                    <td><a href='tables/roles.html'>roles</a><span>.id</span></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
+                                    </tr>
+                                    <tr>
                                         <td>copria_color_sort_sequence_transect_id_foreign</td>
                                         <td>
                                             <table border='0' cellspacing='0' cellpadding='0'>
@@ -1308,6 +1344,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr>
+                                        <td><a href='tables/project_invitations.html'>project_invitations</a></td>
+                                        <td>check_max_uses</td>
+                                        <td>(((max_uses IS NULL) OR (current_uses &lt;= max_uses)))</td>
+                                    </tr>
                                     <tr>
                                         <td><a href='tables/federated_search_models.html'>federated_search_models</a></td>
                                         <td>federated_search_models_type_check</td>
