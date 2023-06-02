@@ -22,7 +22,9 @@ storage_requests
 video_annotations
 api_tokens
 color_sort_sequences
+lslogin_ids
 storage_request_files
+user_disks
 annotation_session_user
 federated_search_model_user
 label_tree_authorized_project
