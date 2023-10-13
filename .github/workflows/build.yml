@@ -45,7 +45,7 @@ jobs:
 
     - name: Start database
       run: |
-        docker-compose up -d --no-build app database
+        docker-compose up -d --no-build app database vector_database
         sleep 5
       working-directory: ../core
 
