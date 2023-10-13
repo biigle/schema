@@ -42,6 +42,7 @@ jobs:
     - name: Fetch base images
       run: |
         docker pull ghcr.io/biigle/app:latest
+        docker pull ghcr.io/biigle/pgvector:latest
 
     - name: Start database
       run: |
