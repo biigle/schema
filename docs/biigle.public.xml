@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<database name="biigle" schema="public" type="PostgreSQL - 14.9">
+<database name="biigle" schema="public" type="PostgreSQL - 14.10">
    <sequences>
       <sequence increment="1" name="annotation_assistance_requests_id_seq" startValue="1"/>
       <sequence increment="1" name="annotation_labels_id_seq" startValue="1"/>
@@ -718,6 +718,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="role_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="project_invitations_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="roles"/>
          </column>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="9" name="add_to_sessions" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="project_invitations_pkey" unique="true">
             <column ascending="true" name="id"/>
