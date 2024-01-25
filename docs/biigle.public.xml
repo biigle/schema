@@ -227,8 +227,39 @@
          </index>
          <checkConstraint constraint="(((type)::text = ANY ((ARRAY['Biigle\LabelTree'::character varying, 'Biigle\Project'::character varying, 'Biigle\Volume'::character varying])::text[])))" name="federated_search_models_type_check"/>
       </table>
+      <table name="image_annotation_label_feature_vectors" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="image_annotation_label_feature_vectors_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_annotation_labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="annotation_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="image_annotation_label_feature_vectors_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_annotations"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="label_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="image_annotation_label_feature_vectors_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="label_tree_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="image_annotation_label_feature_vectors_label_tree_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="label_trees"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="volume_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="image_annotation_label_feature_vectors_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="volumes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="vector" nullable="false" remarks="" size="2147483647" type="vector" typeCode="1111"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="image_annotation_label_feature_vectors_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="image_annotation_label_feature_vectors_annotation_id_index" unique="false">
+            <column ascending="true" name="annotation_id"/>
+         </index>
+         <index name="image_annotation_label_feature_vectors_label_id_volume_id_index" unique="false">
+            <column ascending="true" name="label_id"/>
+            <column ascending="true" name="volume_id"/>
+         </index>
+      </table>
       <table name="image_annotation_labels" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="true" defaultValue="nextval('annotation_labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="true" defaultValue="nextval('annotation_labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="id" foreignKey="image_annotation_label_feature_vectors_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_annotation_label_feature_vectors"/>
+         </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="annotation_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="annotation_labels_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_annotations"/>
          </column>
@@ -263,6 +294,7 @@
       <table name="image_annotations" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('annotations_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="annotation_id" foreignKey="annotation_assistance_requests_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="annotation_assistance_requests"/>
+            <child column="annotation_id" foreignKey="image_annotation_label_feature_vectors_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_annotation_label_feature_vectors"/>
             <child column="annotation_id" foreignKey="annotation_labels_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_annotation_labels"/>
             <child column="annotation_id" foreignKey="maia_annotation_candidates_annotation_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_annotation_candidates"/>
          </column>
@@ -452,11 +484,13 @@
       </table>
       <table name="label_trees" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('label_trees_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="label_tree_id" foreignKey="image_annotation_label_feature_vectors_label_tree_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_annotation_label_feature_vectors"/>
             <child column="label_tree_id" foreignKey="label_tree_authorized_project_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_authorized_project"/>
             <child column="label_tree_id" foreignKey="label_tree_project_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_project"/>
             <child column="label_tree_id" foreignKey="label_tree_user_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_user"/>
             <child column="label_tree_id" foreignKey="label_tree_versions_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_versions"/>
             <child column="label_tree_id" foreignKey="labels_label_tree_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="labels"/>
+            <child column="label_tree_id" foreignKey="video_annotation_label_feature_vectors_label_tree_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="video_annotation_label_feature_vectors"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="256" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
@@ -482,10 +516,12 @@
       </table>
       <table name="labels" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="label_id" foreignKey="image_annotation_label_feature_vectors_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_annotation_label_feature_vectors"/>
             <child column="label_id" foreignKey="annotation_labels_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_annotation_labels"/>
             <child column="label_id" foreignKey="image_labels_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_labels"/>
             <child column="parent_id" foreignKey="labels_parent_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="labels"/>
             <child column="label_id" foreignKey="maia_annotation_candidates_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_annotation_candidates"/>
+            <child column="label_id" foreignKey="video_annotation_label_feature_vectors_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="video_annotation_label_feature_vectors"/>
             <child column="label_id" foreignKey="video_annotation_labels_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="video_annotation_labels"/>
             <child column="label_id" foreignKey="video_labels_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="video_labels"/>
          </column>
@@ -990,8 +1026,39 @@
             <column ascending="true" name="uuid"/>
          </index>
       </table>
+      <table name="video_annotation_label_feature_vectors" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="video_annotation_label_feature_vectors_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="video_annotation_labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="annotation_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="video_annotation_label_feature_vectors_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="video_annotations"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="label_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="video_annotation_label_feature_vectors_label_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="labels"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="label_tree_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="video_annotation_label_feature_vectors_label_tree_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="label_trees"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="volume_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="video_annotation_label_feature_vectors_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="volumes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="vector" nullable="false" remarks="" size="2147483647" type="vector" typeCode="1111"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="video_annotation_label_feature_vectors_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="video_annotation_label_feature_vectors_annotation_id_index" unique="false">
+            <column ascending="true" name="annotation_id"/>
+         </index>
+         <index name="video_annotation_label_feature_vectors_label_id_volume_id_index" unique="false">
+            <column ascending="true" name="label_id"/>
+            <column ascending="true" name="volume_id"/>
+         </index>
+      </table>
       <table name="video_annotation_labels" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="true" defaultValue="nextval('video_annotation_labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="true" defaultValue="nextval('video_annotation_labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="id" foreignKey="video_annotation_label_feature_vectors_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="video_annotation_label_feature_vectors"/>
+         </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="annotation_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="video_annotation_labels_video_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="video_annotations"/>
          </column>
@@ -1024,6 +1091,7 @@
       </table>
       <table name="video_annotations" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('video_annotations_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="annotation_id" foreignKey="video_annotation_label_feature_vectors_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="video_annotation_label_feature_vectors"/>
             <child column="annotation_id" foreignKey="video_annotation_labels_video_annotation_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="video_annotation_labels"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="frames" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
@@ -1116,9 +1184,11 @@
          <column autoUpdated="true" defaultValue="nextval('transects_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="volume_id" foreignKey="annotation_sessions_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="annotation_sessions"/>
             <child column="volume_id" foreignKey="copria_color_sort_sequence_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="color_sort_sequences"/>
+            <child column="volume_id" foreignKey="image_annotation_label_feature_vectors_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_annotation_label_feature_vectors"/>
             <child column="volume_id" foreignKey="images_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="images"/>
             <child column="volume_id" foreignKey="maia_jobs_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="maia_jobs"/>
             <child column="volume_id" foreignKey="project_transect_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="project_volume"/>
+            <child column="volume_id" foreignKey="video_annotation_label_feature_vectors_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="video_annotation_label_feature_vectors"/>
             <child column="volume_id" foreignKey="videos_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="videos"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>

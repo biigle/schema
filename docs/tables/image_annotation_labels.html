@@ -111,6 +111,10 @@
                                     <td>nextval(&#39;annotation_labels_id_seq&#39;::regclass)</td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="image_annotation_label_feature_vectors.id references image_annotation_labels.id via image_annotation_label_feature_vectors_id_foreign"><a href='image_annotation_label_feature_vectors.html'>image_annotation_label_feature_vectors</a><span class='relatedKey'>.id</span></td>
+                                                <td class="constraint detail">image_annotation_label_feature_vectors_id_foreign<span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
                                         </table>
                                     </td>
                                     <td>
@@ -310,41 +314,44 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="295,137,689,412">
+<area shape="rect" id="node1" href="image_annotation_label_feature_vectors.html" target="_top" title="image_annotation_label_feature_vectors" alt="" coords="733,84,1152,319">
 <area shape="rect" id="node2" href="image_annotations.html" target="_top" title="image_annotations" alt="" coords="5,5,251,181">
-<area shape="rect" id="node3" href="labels.html" target="_top" title="labels" alt="" coords="35,199,221,463">
-<area shape="rect" id="node4" href="users.html" target="_top" title="users" alt="" coords="27,480,229,685">
+<area shape="rect" id="node3" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="295,81,689,356">
+<area shape="rect" id="node4" href="labels.html" target="_top" title="labels" alt="" coords="35,199,221,463">
+<area shape="rect" id="node5" href="users.html" target="_top" title="users" alt="" coords="27,480,229,685">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/image_annotation_labels.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="annotation_assistance_requests.html" target="_top" title="annotation_assistance_requests" alt="" coords="1442,80,1795,168">
-<area shape="rect" id="node2" href="image_annotations.html" target="_top" title="image_annotations" alt="" coords="1132,636,1377,812">
-<area shape="rect" id="node3" href="users.html" target="_top" title="users" alt="" coords="180,720,381,925">
-<area shape="rect" id="node9" href="images.html" target="_top" title="images" alt="" coords="870,582,1019,670">
-<area shape="rect" id="node10" href="shapes.html" target="_top" title="shapes" alt="" coords="871,1500,1019,1588">
-<area shape="rect" id="node15" href="roles.html" target="_top" title="roles" alt="" coords="5,1325,136,1413">
-<area shape="rect" id="node4" href="annotation_session_user.html" target="_top" title="annotation_session_user" alt="" coords="446,161,737,249">
-<area shape="rect" id="node5" href="api_tokens.html" target="_top" title="api_tokens" alt="" coords="503,266,680,354">
-<area shape="rect" id="node6" href="federated_search_model_user.html" target="_top" title="federated_search_model_user" alt="" coords="425,372,757,460">
-<area shape="rect" id="node7" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="1421,594,1816,869">
-<area shape="rect" id="node8" href="labels.html" target="_top" title="labels" alt="" coords="499,1466,684,1730">
-<area shape="rect" id="node14" href="label_trees.html" target="_top" title="label_trees" alt="" coords="191,1474,371,1562">
-<area shape="rect" id="node16" href="label_sources.html" target="_top" title="label_sources" alt="" coords="180,1586,381,1674">
-<area shape="rect" id="node12" href="volumes.html" target="_top" title="volumes" alt="" coords="512,549,671,637">
-<area shape="rect" id="node11" href="image_labels.html" target="_top" title="image_labels" alt="" coords="1157,530,1353,618">
-<area shape="rect" id="node13" href="label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="484,1325,699,1413">
-<area shape="rect" id="node17" href="lslogin_ids.html" target="_top" title="lslogin_ids" alt="" coords="504,654,679,742">
-<area shape="rect" id="node18" href="maia_annotation_candidates.html" target="_top" title="maia_annotation_candidates" alt="" coords="1457,886,1780,974">
-<area shape="rect" id="node19" href="maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="859,722,1030,810">
-<area shape="rect" id="node20" href="project_user.html" target="_top" title="project_user" alt="" coords="849,832,1040,920">
-<area shape="rect" id="node21" href="projects.html" target="_top" title="projects" alt="" coords="513,832,670,920">
-<area shape="rect" id="node22" href="reports.html" target="_top" title="reports" alt="" coords="516,937,667,1025">
-<area shape="rect" id="node23" href="storage_requests.html" target="_top" title="storage_requests" alt="" coords="475,1042,707,1130">
-<area shape="rect" id="node24" href="user_disks.html" target="_top" title="user_disks" alt="" coords="503,1148,679,1236">
-<area shape="rect" id="node25" href="video_annotation_labels.html" target="_top" title="video_annotation_labels" alt="" coords="801,1181,1088,1269">
-<area shape="rect" id="node26" href="video_labels.html" target="_top" title="video_labels" alt="" coords="849,1286,1040,1374">
+<area shape="rect" id="node1" href="annotation_assistance_requests.html" target="_top" title="annotation_assistance_requests" alt="" coords="1421,26,1775,114">
+<area shape="rect" id="node2" href="image_annotations.html" target="_top" title="image_annotations" alt="" coords="1081,161,1326,337">
+<area shape="rect" id="node3" href="users.html" target="_top" title="users" alt="" coords="180,702,381,908">
+<area shape="rect" id="node12" href="images.html" target="_top" title="images" alt="" coords="834,422,983,510">
+<area shape="rect" id="node13" href="shapes.html" target="_top" title="shapes" alt="" coords="835,176,983,264">
+<area shape="rect" id="node16" href="roles.html" target="_top" title="roles" alt="" coords="5,1477,136,1565">
+<area shape="rect" id="node4" href="annotation_session_user.html" target="_top" title="annotation_session_user" alt="" coords="446,458,737,546">
+<area shape="rect" id="node5" href="api_tokens.html" target="_top" title="api_tokens" alt="" coords="503,564,680,652">
+<area shape="rect" id="node6" href="federated_search_model_user.html" target="_top" title="federated_search_model_user" alt="" coords="425,705,757,793">
+<area shape="rect" id="node7" href="image_annotation_label_feature_vectors.html" target="_top" title="image_annotation_label_feature_vectors" alt="" coords="1849,410,2268,645">
+<area shape="rect" id="node8" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="1401,132,1795,406">
+<area shape="rect" id="node9" href="labels.html" target="_top" title="labels" alt="" coords="816,705,1001,969">
+<area shape="rect" id="node10" href="label_trees.html" target="_top" title="label_trees" alt="" coords="501,1550,681,1638">
+<area shape="rect" id="node11" href="volumes.html" target="_top" title="volumes" alt="" coords="512,353,671,441">
+<area shape="rect" id="node17" href="label_sources.html" target="_top" title="label_sources" alt="" coords="491,810,692,898">
+<area shape="rect" id="node14" href="image_labels.html" target="_top" title="image_labels" alt="" coords="1105,640,1301,728">
+<area shape="rect" id="node15" href="label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="801,1618,1016,1706">
+<area shape="rect" id="node18" href="lslogin_ids.html" target="_top" title="lslogin_ids" alt="" coords="504,1057,679,1145">
+<area shape="rect" id="node19" href="maia_annotation_candidates.html" target="_top" title="maia_annotation_candidates" alt="" coords="1437,460,1759,548">
+<area shape="rect" id="node20" href="maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="823,317,994,405">
+<area shape="rect" id="node21" href="project_user.html" target="_top" title="project_user" alt="" coords="813,1022,1004,1110">
+<area shape="rect" id="node22" href="projects.html" target="_top" title="projects" alt="" coords="513,952,670,1040">
+<area shape="rect" id="node23" href="reports.html" target="_top" title="reports" alt="" coords="516,1198,667,1286">
+<area shape="rect" id="node24" href="storage_requests.html" target="_top" title="storage_requests" alt="" coords="475,1304,707,1392">
+<area shape="rect" id="node25" href="user_disks.html" target="_top" title="user_disks" alt="" coords="503,1409,679,1497">
+<area shape="rect" id="node26" href="video_annotation_label_feature_vectors.html" target="_top" title="video_annotation_label_feature_vectors" alt="" coords="1391,816,1805,904">
+<area shape="rect" id="node27" href="video_annotation_labels.html" target="_top" title="video_annotation_labels" alt="" coords="1060,853,1347,941">
+<area shape="rect" id="node28" href="video_labels.html" target="_top" title="video_labels" alt="" coords="1108,462,1299,550">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/image_annotation_labels.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
