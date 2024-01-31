@@ -18,18 +18,13 @@ digraph "twoDegreesRelationshipsDiagram" {
   edge [
     arrowsize="0.8"
   ];
-  "annotation_sessions":"elipses":w -> "volumes":"id":e [arrowhead=none dir=back arrowtail=crowodot];
-  "color_sort_sequences":"elipses":w -> "volumes":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "image_annotation_label_feature_vectors":"elipses":w -> "image_annotation_labels":"elipses":e [arrowhead=none dir=back arrowtail=teeodot];
   "image_annotation_label_feature_vectors":"elipses":w -> "labels":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "image_annotation_label_feature_vectors":"elipses":w -> "label_trees":"id":e [arrowhead=none dir=back arrowtail=crowodot];
-  "image_annotation_label_feature_vectors":"elipses":w -> "volumes":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "image_annotation_labels":"elipses":w -> "labels":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "image_annotation_labels":"elipses":w -> "users":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
-  "image_labels":"elipses":w -> "images":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
   "image_labels":"elipses":w -> "labels":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "image_labels":"elipses":w -> "users":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
-  "images":"elipses":w -> "volumes":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "label_tree_authorized_project":"elipses":w -> "label_trees":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "label_tree_project":"elipses":w -> "label_trees":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "label_tree_user":"elipses":w -> "label_trees":"id":e [arrowhead=none dir=back arrowtail=crowodot];
@@ -39,18 +34,12 @@ digraph "twoDegreesRelationshipsDiagram" {
   "label_trees":"visibility_id":w -> "visibilities":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
   "labels":"label_source_id":w -> "label_sources":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
   "labels":"label_tree_id":w -> "label_trees":"id":e [arrowhead=none dir=back arrowtail=crowodot];
-  "maia_annotation_candidates":"elipses":w -> "images":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
-  "maia_annotation_candidates":"elipses":w -> "maia_jobs":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
   "maia_annotation_candidates":"elipses":w -> "labels":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "maia_annotation_candidates":"elipses":w -> "shapes":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
-  "maia_jobs":"elipses":w -> "users":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
-  "maia_jobs":"elipses":w -> "volumes":"id":e [arrowhead=none dir=back arrowtail=crowodot];
-  "project_volume":"elipses":w -> "volumes":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "video_annotation_label_feature_vectors":"annotation_id":w -> "video_annotations":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "video_annotation_label_feature_vectors":"id":w -> "video_annotation_labels":"id":e [arrowhead=none dir=back arrowtail=teeodot];
   "video_annotation_label_feature_vectors":"label_id":w -> "labels":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "video_annotation_label_feature_vectors":"label_tree_id":w -> "label_trees":"id":e [arrowhead=none dir=back arrowtail=crowodot];
-  "video_annotation_label_feature_vectors":"volume_id":w -> "volumes":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "video_annotation_labels":"annotation_id":w -> "video_annotations":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "video_annotation_labels":"label_id":w -> "labels":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "video_annotation_labels":"user_id":w -> "users":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
@@ -59,37 +48,12 @@ digraph "twoDegreesRelationshipsDiagram" {
   "video_labels":"elipses":w -> "labels":"id":e [arrowhead=none dir=back arrowtail=crowodot];
   "video_labels":"elipses":w -> "users":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
   "video_labels":"elipses":w -> "videos":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
-  "videos":"elipses":w -> "volumes":"id":e [arrowhead=none dir=back arrowtail=crowodot];
-  "volumes":"creator_id":w -> "users":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
-  "volumes":"media_type_id":w -> "media_types":"elipses":e [arrowhead=none dir=back arrowtail=crowodot];
-  "annotation_sessions" [
-   label=<
-    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
-      <TR><TD COLSPAN="3"  BGCOLOR="#f5f5f5"><TABLE BORDER="0" CELLSPACING="0"><TR><TD ALIGN="LEFT"><B>annotation_sessions</B></TD><TD ALIGN="RIGHT">[table]</TD></TR></TABLE></TD></TR>
-      <TR><TD PORT="elipses" COLSPAN="3" ALIGN="LEFT">...</TD></TR>
-      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 1</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">1 &gt;</TD></TR>
-    </TABLE>>
-    URL="annotation_sessions.html"
-    target="_top"
-    tooltip="annotation_sessions"
-  ];
-  "color_sort_sequences" [
-   label=<
-    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
-      <TR><TD COLSPAN="3"  BGCOLOR="#f5f5f5"><TABLE BORDER="0" CELLSPACING="0"><TR><TD ALIGN="LEFT"><B>color_sort_sequences</B></TD><TD ALIGN="RIGHT">[table]</TD></TR></TABLE></TD></TR>
-      <TR><TD PORT="elipses" COLSPAN="3" ALIGN="LEFT">...</TD></TR>
-      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 1</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD></TR>
-    </TABLE>>
-    URL="color_sort_sequences.html"
-    target="_top"
-    tooltip="color_sort_sequences"
-  ];
   "image_annotation_label_feature_vectors" [
    label=<
     <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
       <TR><TD COLSPAN="3"  BGCOLOR="#f5f5f5"><TABLE BORDER="0" CELLSPACING="0"><TR><TD ALIGN="LEFT"><B>image_annotation_label_feature_vectors</B></TD><TD ALIGN="RIGHT">[table]</TD></TR></TABLE></TD></TR>
       <TR><TD PORT="elipses" COLSPAN="3" ALIGN="LEFT">...</TD></TR>
-      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 5</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 4</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD></TR>
     </TABLE>>
     URL="image_annotation_label_feature_vectors.html"
     target="_top"
@@ -116,17 +80,6 @@ digraph "twoDegreesRelationshipsDiagram" {
     URL="image_labels.html"
     target="_top"
     tooltip="image_labels"
-  ];
-  "images" [
-   label=<
-    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
-      <TR><TD COLSPAN="3"  BGCOLOR="#f5f5f5"><TABLE BORDER="0" CELLSPACING="0"><TR><TD ALIGN="LEFT"><B>images</B></TD><TD ALIGN="RIGHT">[table]</TD></TR></TABLE></TD></TR>
-      <TR><TD PORT="elipses" COLSPAN="3" ALIGN="LEFT">...</TD></TR>
-      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 1</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">4 &gt;</TD></TR>
-    </TABLE>>
-    URL="images.html"
-    target="_top"
-    tooltip="images"
   ];
   "label_sources" [
    label=<
@@ -226,39 +179,6 @@ digraph "twoDegreesRelationshipsDiagram" {
     target="_top"
     tooltip="maia_annotation_candidates"
   ];
-  "maia_jobs" [
-   label=<
-    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
-      <TR><TD COLSPAN="3"  BGCOLOR="#f5f5f5"><TABLE BORDER="0" CELLSPACING="0"><TR><TD ALIGN="LEFT"><B>maia_jobs</B></TD><TD ALIGN="RIGHT">[table]</TD></TR></TABLE></TD></TR>
-      <TR><TD PORT="elipses" COLSPAN="3" ALIGN="LEFT">...</TD></TR>
-      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 3</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">4 &gt;</TD></TR>
-    </TABLE>>
-    URL="maia_jobs.html"
-    target="_top"
-    tooltip="maia_jobs"
-  ];
-  "media_types" [
-   label=<
-    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
-      <TR><TD COLSPAN="3"  BGCOLOR="#f5f5f5"><TABLE BORDER="0" CELLSPACING="0"><TR><TD ALIGN="LEFT"><B>media_types</B></TD><TD ALIGN="RIGHT">[table]</TD></TR></TABLE></TD></TR>
-      <TR><TD PORT="elipses" COLSPAN="3" ALIGN="LEFT">...</TD></TR>
-      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">  </TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">1 &gt;</TD></TR>
-    </TABLE>>
-    URL="media_types.html"
-    target="_top"
-    tooltip="media_types"
-  ];
-  "project_volume" [
-   label=<
-    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
-      <TR><TD COLSPAN="3"  BGCOLOR="#f5f5f5"><TABLE BORDER="0" CELLSPACING="0"><TR><TD ALIGN="LEFT"><B>project_volume</B></TD><TD ALIGN="RIGHT">[table]</TD></TR></TABLE></TD></TR>
-      <TR><TD PORT="elipses" COLSPAN="3" ALIGN="LEFT">...</TD></TR>
-      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 2</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD></TR>
-    </TABLE>>
-    URL="project_volume.html"
-    target="_top"
-    tooltip="project_volume"
-  ];
   "shapes" [
    label=<
     <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
@@ -288,10 +208,10 @@ digraph "twoDegreesRelationshipsDiagram" {
       <TR><TD PORT="id" COLSPAN="2" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"><IMG SRC="../../images/primaryKeys.png"/></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="267" HEIGHT="16">id</TD></TR></TABLE></TD><TD PORT="id.type" ALIGN="LEFT">int8[19]</TD></TR>
       <TR><TD PORT="annotation_id" COLSPAN="2" BGCOLOR="#ffffff" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"><IMG SRC="../../images/foreignKeys.png"/></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="267" HEIGHT="16">annotation_id</TD></TR></TABLE></TD><TD PORT="annotation_id.type" ALIGN="LEFT">int8[19]</TD></TR>
       <TR><TD PORT="label_id" COLSPAN="2" BGCOLOR="#ffffff" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"><IMG SRC="../../images/foreignKeys.png"/></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="267" HEIGHT="16">label_id</TD></TR></TABLE></TD><TD PORT="label_id.type" ALIGN="LEFT">int8[19]</TD></TR>
-      <TR><TD PORT="label_tree_id" COLSPAN="2" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"><IMG SRC="../../images/foreignKeys.png"/></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="267" HEIGHT="16">label_tree_id</TD></TR></TABLE></TD><TD PORT="label_tree_id.type" ALIGN="LEFT">int8[19]</TD></TR>
-      <TR><TD PORT="volume_id" COLSPAN="2" BGCOLOR="#ffffff" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"><IMG SRC="../../images/foreignKeys.png"/></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="267" HEIGHT="16">volume_id</TD></TR></TABLE></TD><TD PORT="volume_id.type" ALIGN="LEFT">int8[19]</TD></TR>
+      <TR><TD PORT="label_tree_id" COLSPAN="2" BGCOLOR="#ffffff" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"><IMG SRC="../../images/foreignKeys.png"/></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="267" HEIGHT="16">label_tree_id</TD></TR></TABLE></TD><TD PORT="label_tree_id.type" ALIGN="LEFT">int8[19]</TD></TR>
+      <TR><TD PORT="volume_id" COLSPAN="2" BGCOLOR="#ffffff" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="267" HEIGHT="16">volume_id</TD></TR></TABLE></TD><TD PORT="volume_id.type" ALIGN="LEFT">int8[19]</TD></TR>
       <TR><TD PORT="vector" COLSPAN="2" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="267" HEIGHT="16">vector</TD></TR></TABLE></TD><TD PORT="vector.type" ALIGN="LEFT">vector[2147483647]</TD></TR>
-      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 5</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">0 &gt;</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 4</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">0 &gt;</TD></TR>
     </TABLE>>
     URL="video_annotation_label_feature_vectors.html"
     target="_top"
@@ -358,19 +278,5 @@ digraph "twoDegreesRelationshipsDiagram" {
     URL="visibilities.html"
     target="_top"
     tooltip="visibilities"
-  ];
-  "volumes" [
-   label=<
-    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
-      <TR><TD COLSPAN="3"  BGCOLOR="#f5f5f5"><TABLE BORDER="0" CELLSPACING="0"><TR><TD ALIGN="LEFT"><B>volumes</B></TD><TD ALIGN="RIGHT">[table]</TD></TR></TABLE></TD></TR>
-      <TR><TD PORT="id" COLSPAN="3" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"><IMG SRC="../../images/primaryKeys.png"/></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="96" HEIGHT="16">id</TD></TR></TABLE></TD></TR>
-      <TR><TD PORT="media_type_id" COLSPAN="3" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"><IMG SRC="../../images/foreignKeys.png"/></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="96" HEIGHT="16">media_type_id</TD></TR></TABLE></TD></TR>
-      <TR><TD PORT="creator_id" COLSPAN="3" ALIGN="LEFT"><TABLE BORDER="0" CELLSPACING="0" ALIGN="LEFT"><TR ALIGN="LEFT"><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="15" HEIGHT="16"><IMG SRC="../../images/foreignKeys.png"/></TD><TD ALIGN="LEFT" FIXEDSIZE="TRUE" WIDTH="96" HEIGHT="16">creator_id</TD></TR></TABLE></TD></TR>
-      <TR><TD PORT="elipses" COLSPAN="3" ALIGN="LEFT">...</TD></TR>
-      <TR><TD ALIGN="LEFT" BGCOLOR="#ffffff">&lt; 2</TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">  </TD><TD ALIGN="RIGHT" BGCOLOR="#ffffff">8 &gt;</TD></TR>
-    </TABLE>>
-    URL="volumes.html"
-    target="_top"
-    tooltip="volumes"
   ];
 }

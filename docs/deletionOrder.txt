@@ -7,8 +7,8 @@ jobs
 job_batches
 failed_jobs
 announcements
-video_annotation_label_feature_vectors
 maia_annotation_candidates
+video_annotation_label_feature_vectors
 image_annotation_label_feature_vectors
 video_labels
 project_user

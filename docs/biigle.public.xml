@@ -240,9 +240,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="label_tree_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <parent column="id" foreignKey="image_annotation_label_feature_vectors_label_tree_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="label_trees"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="volume_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
-            <parent column="id" foreignKey="image_annotation_label_feature_vectors_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="volumes"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="volume_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="vector" nullable="false" remarks="" size="2147483647" type="vector" typeCode="1111"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="image_annotation_label_feature_vectors_pkey" unique="true">
@@ -251,9 +249,18 @@
          <index name="image_annotation_label_feature_vectors_annotation_id_index" unique="false">
             <column ascending="true" name="annotation_id"/>
          </index>
+         <index name="image_annotation_label_feature_vectors_id_index" unique="false">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="image_annotation_label_feature_vectors_label_id_index" unique="false">
+            <column ascending="true" name="label_id"/>
+         </index>
          <index name="image_annotation_label_feature_vectors_label_id_volume_id_index" unique="false">
             <column ascending="true" name="label_id"/>
             <column ascending="true" name="volume_id"/>
+         </index>
+         <index name="image_annotation_label_feature_vectors_label_tree_id_index" unique="false">
+            <column ascending="true" name="label_tree_id"/>
          </index>
       </table>
       <table name="image_annotation_labels" remarks="" schema="public" type="TABLE">
@@ -1031,9 +1038,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="label_tree_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <parent column="id" foreignKey="video_annotation_label_feature_vectors_label_tree_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="label_trees"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="volume_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
-            <parent column="id" foreignKey="video_annotation_label_feature_vectors_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="volumes"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="volume_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="vector" nullable="false" remarks="" size="2147483647" type="vector" typeCode="1111"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="video_annotation_label_feature_vectors_pkey" unique="true">
@@ -1042,9 +1047,18 @@
          <index name="video_annotation_label_feature_vectors_annotation_id_index" unique="false">
             <column ascending="true" name="annotation_id"/>
          </index>
+         <index name="video_annotation_label_feature_vectors_id_index" unique="false">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="video_annotation_label_feature_vectors_label_id_index" unique="false">
+            <column ascending="true" name="label_id"/>
+         </index>
          <index name="video_annotation_label_feature_vectors_label_id_volume_id_index" unique="false">
             <column ascending="true" name="label_id"/>
             <column ascending="true" name="volume_id"/>
+         </index>
+         <index name="video_annotation_label_feature_vectors_label_tree_id_index" unique="false">
+            <column ascending="true" name="label_tree_id"/>
          </index>
       </table>
       <table name="video_annotation_labels" remarks="" schema="public" type="TABLE">
@@ -1176,11 +1190,9 @@
          <column autoUpdated="true" defaultValue="nextval('transects_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="volume_id" foreignKey="annotation_sessions_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="annotation_sessions"/>
             <child column="volume_id" foreignKey="copria_color_sort_sequence_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="color_sort_sequences"/>
-            <child column="volume_id" foreignKey="image_annotation_label_feature_vectors_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="image_annotation_label_feature_vectors"/>
             <child column="volume_id" foreignKey="images_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="images"/>
             <child column="volume_id" foreignKey="maia_jobs_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="maia_jobs"/>
             <child column="volume_id" foreignKey="project_transect_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="project_volume"/>
-            <child column="volume_id" foreignKey="video_annotation_label_feature_vectors_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="video_annotation_label_feature_vectors"/>
             <child column="volume_id" foreignKey="videos_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="videos"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
