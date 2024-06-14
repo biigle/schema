@@ -49,6 +49,11 @@ announcements
 failed_jobs
 job_batches
 jobs
+kpis_actions
+kpis_storage_usage
+kpis_unique_users
+kpis_users
+kpis_visits
 migrations
 newsletter_subscribers
 newsletters

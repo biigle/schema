@@ -3,6 +3,11 @@ notifications
 newsletters
 newsletter_subscribers
 migrations
+kpis_visits
+kpis_users
+kpis_unique_users
+kpis_storage_usage
+kpis_actions
 jobs
 job_batches
 failed_jobs

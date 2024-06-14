@@ -415,6 +415,41 @@
             <column ascending="true" name="reserved_at"/>
          </index>
       </table>
+      <table name="kpis_actions" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="date" nullable="false" remarks="" size="13" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="value" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <index name="kpis_actions_date_unique" unique="true">
+            <column ascending="true" name="date"/>
+         </index>
+      </table>
+      <table name="kpis_storage_usage" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="date" nullable="false" remarks="" size="13" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="value" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <index name="kpis_storage_usage_date_unique" unique="true">
+            <column ascending="true" name="date"/>
+         </index>
+      </table>
+      <table name="kpis_unique_users" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="date" nullable="false" remarks="" size="13" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="value" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <index name="kpis_unique_users_date_unique" unique="true">
+            <column ascending="true" name="date"/>
+         </index>
+      </table>
+      <table name="kpis_users" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="date" nullable="false" remarks="" size="13" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="value" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <index name="kpis_users_date_unique" unique="true">
+            <column ascending="true" name="date"/>
+         </index>
+      </table>
+      <table name="kpis_visits" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="date" nullable="false" remarks="" size="13" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="value" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <index name="kpis_visits_date_unique" unique="true">
+            <column ascending="true" name="date"/>
+         </index>
+      </table>
       <table name="label_sources" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('label_sources_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="label_source_id" foreignKey="labels_label_source_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="labels"/>
@@ -922,6 +957,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="size" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="received_chunks" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="total_chunks" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="6" name="retry_count" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="storage_request_files_pkey" unique="true">
             <column ascending="true" name="id"/>
@@ -974,8 +1010,9 @@
          <index name="user_disks_expires_at_index" unique="false">
             <column ascending="true" name="expires_at"/>
          </index>
-         <index name="user_disks_name_unique" unique="true">
+         <index name="user_disks_name_user_id_unique" unique="true">
             <column ascending="true" name="name"/>
+            <column ascending="true" name="user_id"/>
          </index>
       </table>
       <table name="users" remarks="" schema="public" type="TABLE">
