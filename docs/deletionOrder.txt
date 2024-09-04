@@ -14,6 +14,7 @@ failed_jobs
 announcements
 maia_annotation_candidates
 video_annotation_label_feature_vectors
+pending_volumes
 image_annotation_label_feature_vectors
 video_labels
 project_user
@@ -53,9 +54,9 @@ volumes
 users
 visibilities
 report_types
-media_types
 maia_job_states
 label_sources
 federated_search_instances
+media_types
 shapes
 roles

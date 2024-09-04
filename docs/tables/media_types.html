@@ -112,6 +112,10 @@
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
+                                                <td title="pending_volumes.media_type_id references media_types.id via pending_volumes_media_type_id_foreign"><a href='pending_volumes.html'>pending_volumes</a><span class='relatedKey'>.media_type_id</span></td>
+                                                <td class="constraint detail">pending_volumes_media_type_id_foreign<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
                                                 <td title="volumes.media_type_id references media_types.id via transects_media_type_id_foreign"><a href='volumes.html'>volumes</a><span class='relatedKey'>.media_type_id</span></td>
                                                 <td class="constraint detail">transects_media_type_id_foreign<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
@@ -205,22 +209,25 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="volumes.html" target="_top" title="volumes" alt="" coords="320,5,497,181">
-<area shape="rect" id="node2" href="media_types.html" target="_top" title="media_types" alt="" coords="5,32,276,160">
+<area shape="rect" id="node1" href="pending_volumes.html" target="_top" title="pending_volumes" alt="" coords="585,5,840,240">
+<area shape="rect" id="node2" href="media_types.html" target="_top" title="media_types" alt="" coords="5,105,276,233">
+<area shape="rect" id="node3" href="volumes.html" target="_top" title="volumes" alt="" coords="320,131,541,307">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/media_types.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="annotation_sessions.html" target="_top" title="annotation_sessions" alt="" coords="545,111,803,199">
-<area shape="rect" id="node2" href="volumes.html" target="_top" title="volumes" alt="" coords="320,319,497,495">
-<area shape="rect" id="node6" href="users.html" target="_top" title="users" alt="" coords="73,511,208,599">
-<area shape="rect" id="node9" href="media_types.html" target="_top" title="media_types" alt="" coords="5,345,276,473">
-<area shape="rect" id="node3" href="color_sort_sequences.html" target="_top" title="color_sort_sequences" alt="" coords="541,216,807,304">
-<area shape="rect" id="node4" href="images.html" target="_top" title="images" alt="" coords="599,321,749,409">
-<area shape="rect" id="node5" href="maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="589,532,759,620">
-<area shape="rect" id="node7" href="project_volume.html" target="_top" title="project_volume" alt="" coords="567,427,781,515">
-<area shape="rect" id="node8" href="videos.html" target="_top" title="videos" alt="" coords="602,5,746,93">
+<area shape="rect" id="node1" href="annotation_sessions.html" target="_top" title="annotation_sessions" alt="" coords="589,468,847,556">
+<area shape="rect" id="node2" href="volumes.html" target="_top" title="volumes" alt="" coords="320,380,541,556">
+<area shape="rect" id="node6" href="users.html" target="_top" title="users" alt="" coords="73,273,208,361">
+<area shape="rect" id="node8" href="media_types.html" target="_top" title="media_types" alt="" coords="5,103,276,231">
+<area shape="rect" id="node3" href="color_sort_sequences.html" target="_top" title="color_sort_sequences" alt="" coords="585,573,851,661">
+<area shape="rect" id="node4" href="images.html" target="_top" title="images" alt="" coords="643,679,793,767">
+<area shape="rect" id="node5" href="maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="633,363,803,451">
+<area shape="rect" id="node7" href="pending_volumes.html" target="_top" title="pending_volumes" alt="" coords="591,5,845,240">
+<area shape="rect" id="node9" href="projects.html" target="_top" title="projects" alt="" coords="352,239,509,327">
+<area shape="rect" id="node10" href="project_volume.html" target="_top" title="project_volume" alt="" coords="611,257,825,345">
+<area shape="rect" id="node11" href="videos.html" target="_top" title="videos" alt="" coords="646,784,790,872">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/media_types.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>

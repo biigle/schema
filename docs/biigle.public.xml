@@ -25,6 +25,7 @@
       <sequence increment="1" name="migrations_id_seq" startValue="1"/>
       <sequence increment="1" name="newsletter_subscribers_id_seq" startValue="1"/>
       <sequence increment="1" name="newsletters_id_seq" startValue="1"/>
+      <sequence increment="1" name="pending_volumes_id_seq" startValue="1"/>
       <sequence increment="1" name="project_invitations_id_seq" startValue="1"/>
       <sequence increment="1" name="projects_id_seq" startValue="1"/>
       <sequence increment="1" name="report_types_id_seq" startValue="1"/>
@@ -729,6 +730,7 @@
       </table>
       <table name="media_types" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('media_types_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
+            <child column="media_type_id" foreignKey="pending_volumes_media_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="pending_volumes"/>
             <child column="media_type_id" foreignKey="transects_media_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="volumes"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
@@ -804,6 +806,40 @@
             <column ascending="true" name="email"/>
          </index>
       </table>
+      <table name="pending_volumes" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('pending_volumes_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="pending_volumes_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="media_type_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="pending_volumes_media_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="media_types"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="project_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="pending_volumes_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="volume_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="pending_volumes_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="volumes"/>
+         </column>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="7" name="import_annotations" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="8" name="import_file_labels" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="9" name="importing" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="metadata_file_path" nullable="true" remarks="" size="256" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="metadata_parser" nullable="true" remarks="" size="256" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="only_annotation_labels" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="only_file_labels" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="label_map" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="user_map" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="pending_volumes_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="pending_volumes_user_id_project_id_unique" unique="true">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="project_id"/>
+         </index>
+      </table>
       <table name="project_invitations" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('project_invitations_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
@@ -860,6 +896,7 @@
          <column autoUpdated="true" defaultValue="nextval('projects_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="project_id" foreignKey="label_tree_authorized_project_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_authorized_project"/>
             <child column="project_id" foreignKey="label_tree_project_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_project"/>
+            <child column="project_id" foreignKey="pending_volumes_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="pending_volumes"/>
             <child column="project_id" foreignKey="project_invitations_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="project_invitations"/>
             <child column="project_id" foreignKey="project_user_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="project_user"/>
             <child column="project_id" foreignKey="project_transect_project_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="project_volume"/>
@@ -1002,7 +1039,7 @@
             <parent column="id" foreignKey="user_disks_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="options" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="type" nullable="true" remarks="" size="32" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="type" nullable="false" remarks="" size="32" type="varchar" typeCode="12"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="user_disks_pkey" unique="true">
             <column ascending="true" name="id"/>
@@ -1027,6 +1064,7 @@
             <child column="user_id" foreignKey="label_tree_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="label_tree_user"/>
             <child column="user_id" foreignKey="lslogin_ids_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="lslogin_ids"/>
             <child column="user_id" foreignKey="maia_jobs_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_jobs"/>
+            <child column="user_id" foreignKey="pending_volumes_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="pending_volumes"/>
             <child column="user_id" foreignKey="project_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="project_user"/>
             <child column="creator_id" foreignKey="projects_creator_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="projects"/>
             <child column="user_id" foreignKey="reports_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="reports"/>
@@ -1229,6 +1267,7 @@
             <child column="volume_id" foreignKey="copria_color_sort_sequence_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="color_sort_sequences"/>
             <child column="volume_id" foreignKey="images_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="images"/>
             <child column="volume_id" foreignKey="maia_jobs_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="maia_jobs"/>
+            <child column="volume_id" foreignKey="pending_volumes_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="pending_volumes"/>
             <child column="volume_id" foreignKey="project_transect_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="project_volume"/>
             <child column="volume_id" foreignKey="videos_volume_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="videos"/>
          </column>
@@ -1244,6 +1283,8 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="url" nullable="false" remarks="" size="256" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="handle" nullable="true" remarks="" size="256" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="metadata_file_path" nullable="true" remarks="" size="256" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="metadata_parser" nullable="true" remarks="" size="256" type="varchar" typeCode="12"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="transects_pkey" unique="true">
             <column ascending="true" name="id"/>

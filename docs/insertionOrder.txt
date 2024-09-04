@@ -1,9 +1,9 @@
 roles
 shapes
+media_types
 federated_search_instances
 label_sources
 maia_job_states
-media_types
 report_types
 visibilities
 users
@@ -43,6 +43,7 @@ maia_training_proposals
 project_user
 video_labels
 image_annotation_label_feature_vectors
+pending_volumes
 video_annotation_label_feature_vectors
 maia_annotation_candidates
 announcements
