@@ -46,12 +46,12 @@ jobs:
 
     - name: Start database
       run: |
-        docker-compose up -d --no-build app database
+        docker compose up -d --no-build app database
         sleep 5
       working-directory: ../core
 
     - name: Perform migrations
-      run: docker-compose exec -Tu 0 app php artisan migrate --force
+      run: docker compose exec -Tu 0 app php artisan migrate --force
       env:
         COMPOSE_INTERACTIVE_NO_CLI: 1
       working-directory: ../core
