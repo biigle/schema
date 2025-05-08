@@ -152,6 +152,10 @@
                                                 <td class="constraint detail">maia_jobs_user_id_foreign<span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>N</span></td>
                                             </tr>
                                             <tr>
+                                                <td title="nfdi_login_ids.user_id references users.id via nfdi_login_ids_user_id_foreign"><a href='nfdi_login_ids.html'>nfdi_login_ids</a><span class='relatedKey'>.user_id</span></td>
+                                                <td class="constraint detail">nfdi_login_ids_user_id_foreign<span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
+                                            </tr>
+                                            <tr>
                                                 <td title="pending_volumes.user_id references users.id via pending_volumes_user_id_foreign"><a href='pending_volumes.html'>pending_volumes</a><span class='relatedKey'>.user_id</span></td>
                                                 <td class="constraint detail">pending_volumes_user_id_foreign<span title='Cascade on delete:&#10;Deletion of parent deletes child'>C</span></td>
                                             </tr>
@@ -475,7 +479,7 @@
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
 <area shape="rect" id="node1" href="annotation_assistance_requests.html" target="_top" title="annotation_assistance_requests" alt="" coords="572,1514,925,1749">
-<area shape="rect" id="node2" href="users.html" target="_top" title="users" alt="" coords="180,1676,528,2126">
+<area shape="rect" id="node2" href="users.html" target="_top" title="users" alt="" coords="180,1724,528,2174">
 <area shape="rect" id="node9" href="roles.html" target="_top" title="roles" alt="" coords="5,126,136,249">
 <area shape="rect" id="node3" href="annotation_session_user.html" target="_top" title="annotation_session_user" alt="" coords="603,2232,894,2354">
 <area shape="rect" id="node4" href="api_tokens.html" target="_top" title="api_tokens" alt="" coords="660,2372,837,2518">
@@ -483,65 +487,67 @@
 <area shape="rect" id="node6" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="603,2676,895,2881">
 <area shape="rect" id="node7" href="image_labels.html" target="_top" title="image_labels" alt="" coords="651,2898,847,3104">
 <area shape="rect" id="node8" href="label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="641,68,856,220">
-<area shape="rect" id="node10" href="lslogin_ids.html" target="_top" title="lslogin_ids" alt="" coords="661,237,836,384">
+<area shape="rect" id="node10" href="lslogin_ids.html" target="_top" title="lslogin_ids" alt="" coords="661,3121,836,3268">
 <area shape="rect" id="node11" href="maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="1011,2117,1182,2322">
 <area shape="rect" id="node12" href="volumes.html" target="_top" title="volumes" alt="" coords="638,2002,859,2178">
-<area shape="rect" id="node13" href="pending_volumes.html" target="_top" title="pending_volumes" alt="" coords="969,1865,1224,2100">
-<area shape="rect" id="node14" href="projects.html" target="_top" title="projects" alt="" coords="670,1802,827,1949">
-<area shape="rect" id="node15" href="project_user.html" target="_top" title="project_user" alt="" coords="1001,1672,1192,1848">
-<area shape="rect" id="node16" href="reports.html" target="_top" title="reports" alt="" coords="665,401,832,636">
-<area shape="rect" id="node17" href="storage_requests.html" target="_top" title="storage_requests" alt="" coords="633,653,865,829">
-<area shape="rect" id="node18" href="user_disks.html" target="_top" title="user_disks" alt="" coords="661,846,837,1052">
-<area shape="rect" id="node19" href="video_annotation_labels.html" target="_top" title="video_annotation_labels" alt="" coords="605,1069,892,1274">
-<area shape="rect" id="node20" href="video_labels.html" target="_top" title="video_labels" alt="" coords="653,1292,844,1497">
+<area shape="rect" id="node13" href="nfdi_login_ids.html" target="_top" title="nfdi_login_ids" alt="" coords="649,237,848,384">
+<area shape="rect" id="node14" href="pending_volumes.html" target="_top" title="pending_volumes" alt="" coords="969,1865,1224,2100">
+<area shape="rect" id="node15" href="projects.html" target="_top" title="projects" alt="" coords="670,1802,827,1949">
+<area shape="rect" id="node16" href="project_user.html" target="_top" title="project_user" alt="" coords="1001,1672,1192,1848">
+<area shape="rect" id="node17" href="reports.html" target="_top" title="reports" alt="" coords="665,401,832,636">
+<area shape="rect" id="node18" href="storage_requests.html" target="_top" title="storage_requests" alt="" coords="633,653,865,829">
+<area shape="rect" id="node19" href="user_disks.html" target="_top" title="user_disks" alt="" coords="661,846,837,1052">
+<area shape="rect" id="node20" href="video_annotation_labels.html" target="_top" title="video_annotation_labels" alt="" coords="605,1069,892,1274">
+<area shape="rect" id="node21" href="video_labels.html" target="_top" title="video_labels" alt="" coords="653,1292,844,1497">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/users.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="annotation_assistance_requests.html" target="_top" title="annotation_assistance_requests" alt="" coords="1817,1445,2171,1680">
-<area shape="rect" id="node2" href="image_annotations.html" target="_top" title="image_annotations" alt="" coords="1425,865,1671,953">
-<area shape="rect" id="node3" href="users.html" target="_top" title="users" alt="" coords="180,1560,528,2011">
-<area shape="rect" id="node15" href="images.html" target="_top" title="images" alt="" coords="1039,367,1188,455">
-<area shape="rect" id="node21" href="roles.html" target="_top" title="roles" alt="" coords="5,2089,136,2212">
-<area shape="rect" id="node4" href="annotation_session_user.html" target="_top" title="annotation_session_user" alt="" coords="1403,971,1693,1093">
-<area shape="rect" id="node5" href="annotation_sessions.html" target="_top" title="annotation_sessions" alt="" coords="985,472,1242,560">
-<area shape="rect" id="node6" href="volumes.html" target="_top" title="volumes" alt="" coords="627,468,849,644">
-<area shape="rect" id="node30" href="media_types.html" target="_top" title="media_types" alt="" coords="257,547,451,635">
-<area shape="rect" id="node7" href="api_tokens.html" target="_top" title="api_tokens" alt="" coords="649,1657,827,1804">
-<area shape="rect" id="node8" href="color_sort_sequences.html" target="_top" title="color_sort_sequences" alt="" coords="981,261,1246,349">
-<area shape="rect" id="node9" href="federated_search_model_user.html" target="_top" title="federated_search_model_user" alt="" coords="572,2116,904,2239">
-<area shape="rect" id="node10" href="federated_search_models.html" target="_top" title="federated_search_models" alt="" coords="205,2119,503,2207">
-<area shape="rect" id="node11" href="image_annotation_label_feature_vectors.html" target="_top" title="image_annotation_label_feature_vectors" alt="" coords="2215,1732,2633,1820">
-<area shape="rect" id="node12" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="1848,1133,2140,1339">
-<area shape="rect" id="node13" href="labels.html" target="_top" title="labels" alt="" coords="1044,1835,1183,1923">
-<area shape="rect" id="node14" href="label_trees.html" target="_top" title="label_trees" alt="" coords="648,1896,828,1984">
-<area shape="rect" id="node16" href="image_labels.html" target="_top" title="image_labels" alt="" coords="1450,1609,1646,1815">
-<area shape="rect" id="node17" href="label_tree_authorized_project.html" target="_top" title="label_tree_authorized_project" alt="" coords="948,1375,1279,1463">
-<area shape="rect" id="node18" href="projects.html" target="_top" title="projects" alt="" coords="659,1228,817,1375">
-<area shape="rect" id="node19" href="label_tree_project.html" target="_top" title="label_tree_project" alt="" coords="995,1480,1231,1568">
-<area shape="rect" id="node20" href="label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="1006,2048,1221,2200">
-<area shape="rect" id="node22" href="lslogin_ids.html" target="_top" title="lslogin_ids" alt="" coords="651,733,825,880">
-<area shape="rect" id="node23" href="maia_annotation_candidate_feature_vectors.html" target="_top" title="maia_annotation_candidate_feature_vectors" alt="" coords="1323,79,1773,167">
-<area shape="rect" id="node24" href="maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="1028,39,1199,244">
-<area shape="rect" id="node26" href="maia_job_states.html" target="_top" title="maia_job_states" alt="" coords="627,173,849,261">
-<area shape="rect" id="node25" href="maia_annotation_candidates.html" target="_top" title="maia_annotation_candidates" alt="" coords="1833,800,2155,888">
-<area shape="rect" id="node27" href="maia_training_proposal_feature_vectors.html" target="_top" title="maia_training_proposal_feature_vectors" alt="" coords="1341,184,1755,272">
-<area shape="rect" id="node28" href="maia_training_proposals.html" target="_top" title="maia_training_proposals" alt="" coords="1404,309,1692,397">
-<area shape="rect" id="node29" href="pending_volumes.html" target="_top" title="pending_volumes" alt="" coords="986,683,1241,917">
-<area shape="rect" id="node31" href="project_invitations.html" target="_top" title="project_invitations" alt="" coords="992,1693,1235,1781">
-<area shape="rect" id="node32" href="project_user.html" target="_top" title="project_user" alt="" coords="1018,1076,1209,1252">
-<area shape="rect" id="node33" href="project_volume.html" target="_top" title="project_volume" alt="" coords="1006,935,1221,1023">
-<area shape="rect" id="node34" href="reports.html" target="_top" title="reports" alt="" coords="655,2256,821,2491">
-<area shape="rect" id="node35" href="report_types.html" target="_top" title="report_types" alt="" coords="257,2317,451,2405">
-<area shape="rect" id="node36" href="storage_request_files.html" target="_top" title="storage_request_files" alt="" coords="981,1269,1246,1357">
-<area shape="rect" id="node37" href="storage_requests.html" target="_top" title="storage_requests" alt="" coords="622,1392,854,1568">
-<area shape="rect" id="node38" href="user_disks.html" target="_top" title="user_disks" alt="" coords="650,897,826,1103">
-<area shape="rect" id="node39" href="video_annotation_label_feature_vectors.html" target="_top" title="video_annotation_label_feature_vectors" alt="" coords="2217,1840,2631,1928">
-<area shape="rect" id="node40" href="video_annotations.html" target="_top" title="video_annotations" alt="" coords="1428,1245,1668,1333">
-<area shape="rect" id="node41" href="video_annotation_labels.html" target="_top" title="video_annotation_labels" alt="" coords="1851,1877,2137,2083">
-<area shape="rect" id="node42" href="videos.html" target="_top" title="videos" alt="" coords="1041,577,1185,665">
-<area shape="rect" id="node43" href="video_labels.html" target="_top" title="video_labels" alt="" coords="1453,1351,1643,1556">
+<area shape="rect" id="node1" href="annotation_assistance_requests.html" target="_top" title="annotation_assistance_requests" alt="" coords="1817,2287,2171,2521">
+<area shape="rect" id="node2" href="image_annotations.html" target="_top" title="image_annotations" alt="" coords="1425,593,1671,681">
+<area shape="rect" id="node3" href="users.html" target="_top" title="users" alt="" coords="180,1355,528,1805">
+<area shape="rect" id="node15" href="images.html" target="_top" title="images" alt="" coords="1039,452,1188,540">
+<area shape="rect" id="node21" href="roles.html" target="_top" title="roles" alt="" coords="5,2465,136,2588">
+<area shape="rect" id="node4" href="annotation_session_user.html" target="_top" title="annotation_session_user" alt="" coords="1403,699,1693,821">
+<area shape="rect" id="node5" href="annotation_sessions.html" target="_top" title="annotation_sessions" alt="" coords="985,557,1242,645">
+<area shape="rect" id="node6" href="volumes.html" target="_top" title="volumes" alt="" coords="627,111,849,287">
+<area shape="rect" id="node31" href="media_types.html" target="_top" title="media_types" alt="" coords="257,191,451,279">
+<area shape="rect" id="node7" href="api_tokens.html" target="_top" title="api_tokens" alt="" coords="649,2069,827,2216">
+<area shape="rect" id="node8" href="color_sort_sequences.html" target="_top" title="color_sort_sequences" alt="" coords="981,663,1246,751">
+<area shape="rect" id="node9" href="federated_search_model_user.html" target="_top" title="federated_search_model_user" alt="" coords="572,340,904,463">
+<area shape="rect" id="node10" href="federated_search_models.html" target="_top" title="federated_search_models" alt="" coords="205,343,503,431">
+<area shape="rect" id="node11" href="image_annotation_label_feature_vectors.html" target="_top" title="image_annotation_label_feature_vectors" alt="" coords="2215,1316,2633,1404">
+<area shape="rect" id="node12" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="1848,1111,2140,1316">
+<area shape="rect" id="node13" href="labels.html" target="_top" title="labels" alt="" coords="1044,1381,1183,1469">
+<area shape="rect" id="node14" href="label_trees.html" target="_top" title="label_trees" alt="" coords="648,1728,828,1816">
+<area shape="rect" id="node16" href="image_labels.html" target="_top" title="image_labels" alt="" coords="1450,944,1646,1149">
+<area shape="rect" id="node17" href="label_tree_authorized_project.html" target="_top" title="label_tree_authorized_project" alt="" coords="948,1736,1279,1824">
+<area shape="rect" id="node18" href="projects.html" target="_top" title="projects" alt="" coords="659,1833,817,1980">
+<area shape="rect" id="node19" href="label_tree_project.html" target="_top" title="label_tree_project" alt="" coords="995,1841,1231,1929">
+<area shape="rect" id="node20" href="label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="1006,1947,1221,2099">
+<area shape="rect" id="node22" href="lslogin_ids.html" target="_top" title="lslogin_ids" alt="" coords="651,840,825,987">
+<area shape="rect" id="node23" href="maia_annotation_candidate_feature_vectors.html" target="_top" title="maia_annotation_candidate_feature_vectors" alt="" coords="1323,233,1773,321">
+<area shape="rect" id="node24" href="maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="1028,229,1199,435">
+<area shape="rect" id="node26" href="maia_job_states.html" target="_top" title="maia_job_states" alt="" coords="627,5,849,93">
+<area shape="rect" id="node25" href="maia_annotation_candidates.html" target="_top" title="maia_annotation_candidates" alt="" coords="1833,555,2155,643">
+<area shape="rect" id="node27" href="maia_training_proposal_feature_vectors.html" target="_top" title="maia_training_proposal_feature_vectors" alt="" coords="1341,339,1755,427">
+<area shape="rect" id="node28" href="maia_training_proposals.html" target="_top" title="maia_training_proposals" alt="" coords="1404,445,1692,533">
+<area shape="rect" id="node29" href="nfdi_login_ids.html" target="_top" title="nfdi_login_ids" alt="" coords="639,1004,837,1151">
+<area shape="rect" id="node30" href="pending_volumes.html" target="_top" title="pending_volumes" alt="" coords="986,909,1241,1144">
+<area shape="rect" id="node32" href="project_invitations.html" target="_top" title="project_invitations" alt="" coords="992,2309,1235,2397">
+<area shape="rect" id="node33" href="project_user.html" target="_top" title="project_user" alt="" coords="1018,2116,1209,2292">
+<area shape="rect" id="node34" href="project_volume.html" target="_top" title="project_volume" alt="" coords="1006,1487,1221,1575">
+<area shape="rect" id="node35" href="reports.html" target="_top" title="reports" alt="" coords="655,480,821,715">
+<area shape="rect" id="node36" href="report_types.html" target="_top" title="report_types" alt="" coords="257,541,451,629">
+<area shape="rect" id="node37" href="storage_request_files.html" target="_top" title="storage_request_files" alt="" coords="981,1207,1246,1295">
+<area shape="rect" id="node38" href="storage_requests.html" target="_top" title="storage_requests" alt="" coords="622,1204,854,1380">
+<area shape="rect" id="node39" href="user_disks.html" target="_top" title="user_disks" alt="" coords="650,1433,826,1639">
+<area shape="rect" id="node40" href="video_annotation_label_feature_vectors.html" target="_top" title="video_annotation_label_feature_vectors" alt="" coords="2217,1543,2631,1631">
+<area shape="rect" id="node41" href="video_annotations.html" target="_top" title="video_annotations" alt="" coords="1428,839,1668,927">
+<area shape="rect" id="node42" href="video_annotation_labels.html" target="_top" title="video_annotation_labels" alt="" coords="1851,1333,2137,1539">
+<area shape="rect" id="node43" href="videos.html" target="_top" title="videos" alt="" coords="1041,804,1185,892">
+<area shape="rect" id="node44" href="video_labels.html" target="_top" title="video_labels" alt="" coords="1453,1167,1643,1372">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/users.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>

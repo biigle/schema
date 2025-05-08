@@ -27,6 +27,7 @@ color_sort_sequences
 lslogin_ids
 maia_annotation_candidate_feature_vectors
 maia_training_proposal_feature_vectors
+nfdi_login_ids
 storage_request_files
 user_disks
 annotation_session_user

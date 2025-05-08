@@ -31,6 +31,7 @@ federated_search_model_user
 annotation_session_user
 user_disks
 storage_request_files
+nfdi_login_ids
 maia_training_proposal_feature_vectors
 maia_annotation_candidate_feature_vectors
 lslogin_ids
