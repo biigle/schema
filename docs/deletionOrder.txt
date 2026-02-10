@@ -11,6 +11,7 @@ kpis_actions
 jobs
 job_batches
 failed_jobs
+events
 announcements
 maia_annotation_candidates
 video_annotation_label_feature_vectors
@@ -35,6 +36,7 @@ nfdi_login_ids
 maia_training_proposal_feature_vectors
 maia_annotation_candidate_feature_vectors
 lslogin_ids
+helmholtz_ids
 color_sort_sequences
 api_tokens
 video_annotation_labels

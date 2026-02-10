@@ -24,6 +24,7 @@ image_annotation_labels
 video_annotation_labels
 api_tokens
 color_sort_sequences
+helmholtz_ids
 lslogin_ids
 maia_annotation_candidate_feature_vectors
 maia_training_proposal_feature_vectors
@@ -48,6 +49,7 @@ pending_volumes
 video_annotation_label_feature_vectors
 maia_annotation_candidates
 announcements
+events
 failed_jobs
 job_batches
 jobs
