@@ -19,20 +19,15 @@
       <sequence increment="1" name="label_trees_id_seq" startValue="1"/>
       <sequence increment="1" name="labels_id_seq" startValue="1"/>
       <sequence increment="1" name="maia_annotation_candidates_id_seq" startValue="1"/>
-      <sequence increment="1" name="maia_job_states_id_seq" startValue="1"/>
       <sequence increment="1" name="maia_jobs_id_seq" startValue="1"/>
       <sequence increment="1" name="maia_training_proposals_id_seq" startValue="1"/>
-      <sequence increment="1" name="media_types_id_seq" startValue="1"/>
       <sequence increment="1" name="migrations_id_seq" startValue="1"/>
       <sequence increment="1" name="newsletter_subscribers_id_seq" startValue="1"/>
       <sequence increment="1" name="newsletters_id_seq" startValue="1"/>
       <sequence increment="1" name="pending_volumes_id_seq" startValue="1"/>
       <sequence increment="1" name="project_invitations_id_seq" startValue="1"/>
       <sequence increment="1" name="projects_id_seq" startValue="1"/>
-      <sequence increment="1" name="report_types_id_seq" startValue="1"/>
       <sequence increment="1" name="reports_id_seq" startValue="1"/>
-      <sequence increment="1" name="roles_id_seq" startValue="1"/>
-      <sequence increment="1" name="shapes_id_seq" startValue="1"/>
       <sequence increment="1" name="storage_request_files_id_seq" startValue="1"/>
       <sequence increment="1" name="storage_requests_id_seq" startValue="1"/>
       <sequence increment="1" name="system_messages_id_seq" startValue="1"/>
@@ -43,7 +38,6 @@
       <sequence increment="1" name="video_annotations_id_seq" startValue="1"/>
       <sequence increment="1" name="video_labels_id_seq" startValue="1"/>
       <sequence increment="1" name="videos_id_seq" startValue="1"/>
-      <sequence increment="1" name="visibilities_id_seq" startValue="1"/>
    </sequences>
    <tables>
       <table name="annotation_assistance_requests" remarks="" schema="public" type="TABLE">
@@ -335,9 +329,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="image_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="annotations_image_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="images"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="shape_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
-            <parent column="id" foreignKey="annotations_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="shapes"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="shape" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
@@ -350,6 +342,7 @@
          <index name="image_annotations_created_at_index" unique="false">
             <column ascending="true" name="created_at"/>
          </index>
+         <checkConstraint constraint="(((shape &gt;= 1) AND (shape &lt;= 7))) NOT VALID" name="image_annotations_shape_check"/>
       </table>
       <table name="image_labels" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('image_labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
@@ -531,13 +524,12 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="label_tree_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="role_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
-            <parent column="id" foreignKey="label_tree_user_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="roles"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="role" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <index name="label_tree_user_label_tree_id_user_id_unique" unique="true">
             <column ascending="true" name="label_tree_id"/>
             <column ascending="true" name="user_id"/>
          </index>
+         <checkConstraint constraint="(((role &gt;= 1) AND (role &lt;= 4))) NOT VALID" name="label_tree_user_role_check"/>
       </table>
       <table name="label_tree_versions" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('label_tree_versions_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
@@ -572,9 +564,7 @@
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="256" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="visibility_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
-            <parent column="id" foreignKey="label_trees_visibility_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="visibilities"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="visibility" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
@@ -591,6 +581,7 @@
          <index name="label_trees_version_id_unique" unique="true">
             <column ascending="true" name="version_id"/>
          </index>
+         <checkConstraint constraint="(((visibility &gt;= 1) AND (visibility &lt;= 2))) NOT VALID" name="label_trees_visibility_check"/>
       </table>
       <table name="labels" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
@@ -665,9 +656,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="image_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="maia_annotation_candidates_image_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="images"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="shape_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
-            <parent column="id" foreignKey="maia_annotation_candidates_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="shapes"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="shape" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="job_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="maia_annotation_candidates_job_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="maia_jobs"/>
          </column>
@@ -693,16 +682,7 @@
          <index name="maia_annotation_candidates_label_id_index" unique="false">
             <column ascending="true" name="label_id"/>
          </index>
-      </table>
-      <table name="maia_job_states" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="true" defaultValue="nextval('maia_job_states_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
-            <child column="state_id" foreignKey="maia_jobs_state_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_jobs"/>
-         </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="64" type="varchar" typeCode="12"/>
-         <primaryKey column="id" sequenceNumberInPK="1"/>
-         <index name="maia_job_states_pkey" unique="true">
-            <column ascending="true" name="id"/>
-         </index>
+         <checkConstraint constraint="(((shape &gt;= 1) AND (shape &lt;= 7))) NOT VALID" name="maia_annotation_candidates_shape_check"/>
       </table>
       <table name="maia_jobs" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('maia_jobs_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
@@ -719,9 +699,7 @@
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="state_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
-            <parent column="id" foreignKey="maia_jobs_state_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_job_states"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="state" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="attrs" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="maia_jobs_pkey" unique="true">
@@ -730,6 +708,7 @@
          <index name="maia_jobs_volume_id_index" unique="false">
             <column ascending="true" name="volume_id"/>
          </index>
+         <checkConstraint constraint="(((state &gt;= 1) AND (state &lt;= 6))) NOT VALID" name="maia_jobs_state_check"/>
       </table>
       <table name="maia_training_proposal_feature_vectors" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
@@ -752,9 +731,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="image_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="maia_training_proposals_image_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="images"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="shape_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
-            <parent column="id" foreignKey="maia_training_proposals_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="shapes"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="shape" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="job_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="maia_training_proposals_job_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="maia_jobs"/>
          </column>
@@ -768,23 +745,7 @@
          <index name="maia_training_proposals_job_id_index" unique="false">
             <column ascending="true" name="job_id"/>
          </index>
-      </table>
-      <table name="media_types" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="true" defaultValue="nextval('media_types_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
-            <child column="media_type_id" foreignKey="pending_volumes_media_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="pending_volumes"/>
-            <child column="media_type_id" foreignKey="transects_media_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="volumes"/>
-         </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
-         <primaryKey column="id" sequenceNumberInPK="1"/>
-         <index name="media_types_pkey" unique="true">
-            <column ascending="true" name="id"/>
-         </index>
-         <index name="media_types_name_index" unique="false">
-            <column ascending="true" name="name"/>
-         </index>
-         <index name="media_types_name_unique" unique="true">
-            <column ascending="true" name="name"/>
-         </index>
+         <checkConstraint constraint="(((shape &gt;= 1) AND (shape &lt;= 7))) NOT VALID" name="maia_training_proposals_shape_check"/>
       </table>
       <table name="migrations" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('migrations_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
@@ -866,9 +827,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <parent column="id" foreignKey="pending_volumes_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="media_type_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
-            <parent column="id" foreignKey="pending_volumes_media_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="media_types"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="media_type" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="project_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
             <parent column="id" foreignKey="pending_volumes_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
          </column>
@@ -892,6 +851,7 @@
             <column ascending="true" name="user_id"/>
             <column ascending="true" name="project_id"/>
          </index>
+         <checkConstraint constraint="(((media_type &gt;= 1) AND (media_type &lt;= 2))) NOT VALID" name="pending_volumes_media_type_check"/>
       </table>
       <table name="project_invitations" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('project_invitations_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
@@ -904,9 +864,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="project_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="project_invitations_project_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="projects"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="role_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
-            <parent column="id" foreignKey="project_invitations_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="roles"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="role" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="false" digits="0" id="9" name="add_to_sessions" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
          <index name="project_invitations_pkey" unique="true">
@@ -916,11 +874,10 @@
             <column ascending="true" name="uuid"/>
          </index>
          <checkConstraint constraint="(((max_uses IS NULL) OR (current_uses &lt;= max_uses)))" name="check_max_uses"/>
+         <checkConstraint constraint="(((role &gt;= 1) AND (role &lt;= 4))) NOT VALID" name="project_invitations_role_check"/>
       </table>
       <table name="project_user" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="project_role_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
-            <parent column="id" foreignKey="project_user_project_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="roles"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="project_role" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="project_user_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
          </column>
@@ -932,6 +889,7 @@
             <column ascending="true" name="user_id"/>
             <column ascending="true" name="project_id"/>
          </index>
+         <checkConstraint constraint="(((project_role &gt;= 1) AND (project_role &lt;= 4))) NOT VALID" name="project_user_project_role_check"/>
       </table>
       <table name="project_volume" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="volume_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
@@ -966,30 +924,12 @@
             <column ascending="true" name="id"/>
          </index>
       </table>
-      <table name="report_types" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="true" defaultValue="nextval('report_types_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
-            <child column="type_id" foreignKey="reports_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="reports"/>
-         </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="128" type="varchar" typeCode="12"/>
-         <primaryKey column="id" sequenceNumberInPK="1"/>
-         <index name="report_types_pkey" unique="true">
-            <column ascending="true" name="id"/>
-         </index>
-         <index name="report_types_name_index" unique="false">
-            <column ascending="true" name="name"/>
-         </index>
-         <index name="report_types_name_unique" unique="true">
-            <column ascending="true" name="name"/>
-         </index>
-      </table>
       <table name="reports" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('reports_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="reports_user_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="users"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="type_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
-            <parent column="id" foreignKey="reports_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="report_types"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="type" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="source_type" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="source_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="source_name" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
@@ -1005,38 +945,7 @@
             <column ascending="true" name="source_type"/>
             <column ascending="true" name="source_id"/>
          </index>
-      </table>
-      <table name="roles" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="true" defaultValue="nextval('roles_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
-            <child column="role_id" foreignKey="label_tree_user_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="label_tree_user"/>
-            <child column="role_id" foreignKey="project_invitations_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="project_invitations"/>
-            <child column="project_role_id" foreignKey="project_user_project_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="project_user"/>
-            <child column="role_id" foreignKey="users_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="users"/>
-         </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="128" type="varchar" typeCode="12"/>
-         <primaryKey column="id" sequenceNumberInPK="1"/>
-         <index name="roles_pkey" unique="true">
-            <column ascending="true" name="id"/>
-         </index>
-         <index name="roles_name_index" unique="false">
-            <column ascending="true" name="name"/>
-         </index>
-         <index name="roles_name_unique" unique="true">
-            <column ascending="true" name="name"/>
-         </index>
-      </table>
-      <table name="shapes" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="true" defaultValue="nextval('shapes_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
-            <child column="shape_id" foreignKey="annotations_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="image_annotations"/>
-            <child column="shape_id" foreignKey="maia_annotation_candidates_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_annotation_candidates"/>
-            <child column="shape_id" foreignKey="maia_training_proposals_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="maia_training_proposals"/>
-            <child column="shape_id" foreignKey="video_annotations_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="video_annotations"/>
-         </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="256" type="varchar" typeCode="12"/>
-         <primaryKey column="id" sequenceNumberInPK="1"/>
-         <index name="shapes_pkey" unique="true">
-            <column ascending="true" name="id"/>
-         </index>
+         <checkConstraint constraint="(((type &gt;= 1) AND (type &lt;= 16))) NOT VALID" name="reports_type_check"/>
       </table>
       <table name="storage_request_files" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('storage_request_files_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
@@ -1133,9 +1042,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="lastname" nullable="false" remarks="" size="128" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="password" nullable="false" remarks="" size="60" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="email" nullable="false" remarks="" size="256" type="varchar" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="role_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
-            <parent column="id" foreignKey="users_role_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="roles"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="role" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="remember_token" nullable="true" remarks="" size="100" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
@@ -1154,6 +1061,7 @@
          <index name="users_uuid_unique" unique="true">
             <column ascending="true" name="uuid"/>
          </index>
+         <checkConstraint constraint="(((role &gt;= 1) AND (role &lt;= 4))) NOT VALID" name="users_role_check"/>
       </table>
       <table name="video_annotation_label_feature_vectors" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
@@ -1235,9 +1143,7 @@
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="video_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="video_annotations_video_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="videos"/>
          </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="shape_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
-            <parent column="id" foreignKey="video_annotations_shape_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="shapes"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="shape" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="updated_at" nullable="true" remarks="" size="22" type="timestamp" typeCode="93"/>
          <primaryKey column="id" sequenceNumberInPK="1"/>
@@ -1250,6 +1156,7 @@
          <index name="video_annotations_video_id_index" unique="false">
             <column ascending="true" name="video_id"/>
          </index>
+         <checkConstraint constraint="(((shape &gt;= 1) AND (shape &lt;= 7))) NOT VALID" name="video_annotations_shape_check"/>
       </table>
       <table name="video_labels" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('video_labels_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
@@ -1303,22 +1210,6 @@
             <column ascending="true" name="volume_id"/>
          </index>
       </table>
-      <table name="visibilities" remarks="" schema="public" type="TABLE">
-         <column autoUpdated="true" defaultValue="nextval('visibilities_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
-            <child column="visibility_id" foreignKey="label_trees_visibility_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="label_trees"/>
-         </column>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="128" type="varchar" typeCode="12"/>
-         <primaryKey column="id" sequenceNumberInPK="1"/>
-         <index name="visibilities_pkey" unique="true">
-            <column ascending="true" name="id"/>
-         </index>
-         <index name="visibilities_name_index" unique="false">
-            <column ascending="true" name="name"/>
-         </index>
-         <index name="visibilities_name_unique" unique="true">
-            <column ascending="true" name="name"/>
-         </index>
-      </table>
       <table name="volumes" remarks="" schema="public" type="TABLE">
          <column autoUpdated="true" defaultValue="nextval('transects_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4">
             <child column="volume_id" foreignKey="annotation_sessions_transect_id_foreign" implied="false" onDeleteCascade="true" schema="public" table="annotation_sessions"/>
@@ -1331,9 +1222,7 @@
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="512" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="attrs" nullable="true" remarks="" size="2147483647" type="json" typeCode="1111"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="media_type_id" nullable="false" remarks="" size="10" type="int4" typeCode="4">
-            <parent column="id" foreignKey="transects_media_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="media_types"/>
-         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="media_type" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="creator_id" nullable="true" remarks="" size="10" type="int4" typeCode="4">
             <parent column="id" foreignKey="transects_creator_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="users"/>
          </column>
@@ -1347,6 +1236,7 @@
          <index name="transects_pkey" unique="true">
             <column ascending="true" name="id"/>
          </index>
+         <checkConstraint constraint="(((media_type &gt;= 1) AND (media_type &lt;= 2))) NOT VALID" name="volumes_media_type_check"/>
       </table>
    </tables>
 </database>

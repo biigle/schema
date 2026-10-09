@@ -174,7 +174,7 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="shape_id">shape_id</span></td>
+                                    <td><span id="shape">shape</span></td>
                                     <td>int4</td>
                                     <td>10</td>
                                     <td title=''></td>
@@ -186,10 +186,6 @@
                                     </td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
-                                            <tr>
-                                                <td title="image_annotations.shape_id references shapes.id via annotations_shape_id_foreign"><a href='shapes.html'>shapes</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">annotations_shape_id_foreign<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
                                         </table>
                                     </td>
                                     <td></td>
@@ -276,6 +272,32 @@
                     </div>
                     <div class="box box-primary">
                         <div class="box-header with-border">
+                            <i class="fa fa-sitemap"></i>
+                            <h3 class="box-title">Check Constraints</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table id="check_table" class="table table-bordered table-striped dataTable" role="grid">
+                                <thead align='left'>
+                                <tr>
+                                    <th>Constraint Name</th>
+                                    <th>Constraint</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>image_annotations_shape_check</td>
+                                    <td>(((shape &gt;= 1) AND (shape &lt;= 7))) NOT VALID</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
                             <i class="fa fa-code-fork"></i>
                             <h3 id="Relationships" class="box-title">Relationships</h3>
                             <div class="box-tools pull-right">
@@ -293,33 +315,30 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="annotation_assistance_requests.html" target="_top" title="annotation_assistance_requests" alt="" coords="609,287,963,521">
-<area shape="rect" id="node2" href="image_annotations.html" target="_top" title="image_annotations" alt="" coords="199,255,565,500">
-<area shape="rect" id="node5" href="images.html" target="_top" title="images" alt="" coords="5,91,155,296">
-<area shape="rect" id="node6" href="shapes.html" target="_top" title="shapes" alt="" coords="6,335,154,452">
-<area shape="rect" id="node3" href="image_annotation_label_feature_vectors.html" target="_top" title="image_annotation_label_feature_vectors" alt="" coords="1007,616,1425,851">
-<area shape="rect" id="node4" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="640,539,932,744">
-<area shape="rect" id="node7" href="maia_annotation_candidates.html" target="_top" title="maia_annotation_candidates" alt="" coords="625,5,947,269">
+<area shape="rect" id="node1" href="annotation_assistance_requests.html" target="_top" title="annotation_assistance_requests" alt="" coords="609,5,963,240">
+<area shape="rect" id="node2" href="image_annotations.html" target="_top" title="image_annotations" alt="" coords="199,323,565,568">
+<area shape="rect" id="node5" href="images.html" target="_top" title="images" alt="" coords="5,465,155,671">
+<area shape="rect" id="node3" href="image_annotation_label_feature_vectors.html" target="_top" title="image_annotation_label_feature_vectors" alt="" coords="1007,335,1425,569">
+<area shape="rect" id="node4" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="640,257,932,463">
+<area shape="rect" id="node6" href="maia_annotation_candidates.html" target="_top" title="maia_annotation_candidates" alt="" coords="625,516,947,751">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/image_annotations.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
 <area shape="rect" id="node1" href="annotation_assistance_requests.html" target="_top" title="annotation_assistance_requests" alt="" coords="1021,5,1375,240">
-<area shape="rect" id="node2" href="image_annotations.html" target="_top" title="image_annotations" alt="" coords="611,309,977,555">
-<area shape="rect" id="node3" href="users.html" target="_top" title="users" alt="" coords="5,200,140,288">
-<area shape="rect" id="node8" href="images.html" target="_top" title="images" alt="" coords="402,376,551,581">
-<area shape="rect" id="node9" href="shapes.html" target="_top" title="shapes" alt="" coords="403,601,551,719">
-<area shape="rect" id="node4" href="image_annotation_label_feature_vectors.html" target="_top" title="image_annotation_label_feature_vectors" alt="" coords="1419,681,1837,916">
-<area shape="rect" id="node5" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="1052,368,1344,573">
-<area shape="rect" id="node6" href="labels.html" target="_top" title="labels" alt="" coords="725,891,863,979">
-<area shape="rect" id="node7" href="label_trees.html" target="_top" title="label_trees" alt="" coords="387,925,567,1013">
-<area shape="rect" id="node11" href="volumes.html" target="_top" title="volumes" alt="" coords="184,437,343,525">
-<area shape="rect" id="node10" href="image_labels.html" target="_top" title="image_labels" alt="" coords="1100,257,1296,345">
-<area shape="rect" id="node12" href="maia_annotation_candidates.html" target="_top" title="maia_annotation_candidates" alt="" coords="1037,647,1359,911">
-<area shape="rect" id="node13" href="maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="391,736,562,824">
-<area shape="rect" id="node14" href="maia_training_proposals.html" target="_top" title="maia_training_proposals" alt="" coords="650,608,938,696">
-<area shape="rect" id="node15" href="video_annotations.html" target="_top" title="video_annotations" alt="" coords="674,713,914,801">
+<area shape="rect" id="node2" href="image_annotations.html" target="_top" title="image_annotations" alt="" coords="611,269,977,515">
+<area shape="rect" id="node3" href="users.html" target="_top" title="users" alt="" coords="5,325,140,413">
+<area shape="rect" id="node8" href="images.html" target="_top" title="images" alt="" coords="402,528,551,733">
+<area shape="rect" id="node4" href="image_annotation_label_feature_vectors.html" target="_top" title="image_annotation_label_feature_vectors" alt="" coords="1419,593,1837,828">
+<area shape="rect" id="node5" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="1052,257,1344,463">
+<area shape="rect" id="node6" href="labels.html" target="_top" title="labels" alt="" coords="725,781,863,869">
+<area shape="rect" id="node7" href="label_trees.html" target="_top" title="label_trees" alt="" coords="387,872,567,960">
+<area shape="rect" id="node10" href="volumes.html" target="_top" title="volumes" alt="" coords="184,589,343,677">
+<area shape="rect" id="node9" href="image_labels.html" target="_top" title="image_labels" alt="" coords="1100,516,1296,604">
+<area shape="rect" id="node11" href="maia_annotation_candidates.html" target="_top" title="maia_annotation_candidates" alt="" coords="1037,621,1359,856">
+<area shape="rect" id="node12" href="maia_jobs.html" target="_top" title="maia_jobs" alt="" coords="391,751,562,839">
+<area shape="rect" id="node13" href="maia_training_proposals.html" target="_top" title="maia_training_proposals" alt="" coords="650,640,938,728">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/image_annotations.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>

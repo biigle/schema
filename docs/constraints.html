@@ -80,7 +80,7 @@
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <i class="ion ion-key"></i>
-                            <h3 class="box-title">86 Foreign Key Constraints</h3>
+                            <h3 class="box-title">73 Foreign Key Constraints</h3>
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -132,24 +132,6 @@
                                             </table>
                                         </td>
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>transects_media_type_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/volumes.html'>volumes</a><span>.media_type_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/media_types.html'>media_types</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
                                     </tr>
                                     <tr>
                                         <td>transects_creator_id_foreign</td>
@@ -314,6 +296,24 @@
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
                                     </tr>
                                     <tr>
+                                        <td>images_transect_id_foreign</td>
+                                        <td>
+                                            <table border='0' cellspacing='0' cellpadding='0'>
+                                                <tr>
+                                                    <td><a href='tables/images.html'>images</a><span>.volume_id</span></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table border='0' cellspacing='0' cellpadding='0'>
+                                                <tr>
+                                                    <td><a href='tables/volumes.html'>volumes</a><span>.id</span></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
+                                    </tr>
+                                    <tr>
                                         <td>image_labels_label_id_foreign</td>
                                         <td>
                                             <table border='0' cellspacing='0' cellpadding='0'>
@@ -368,24 +368,6 @@
                                         <td><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>Null on delete</span></td>
                                     </tr>
                                     <tr>
-                                        <td>images_transect_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/images.html'>images</a><span>.volume_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/volumes.html'>volumes</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
-                                    </tr>
-                                    <tr>
                                         <td>maia_annotation_candidates_job_id_foreign</td>
                                         <td>
                                             <table border='0' cellspacing='0' cellpadding='0'>
@@ -420,24 +402,6 @@
                                             </table>
                                         </td>
                                         <td><span title='Null on delete:&#10;Foreign key to parent set to NULL when parent deleted'>Null on delete</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>maia_annotation_candidates_shape_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/maia_annotation_candidates.html'>maia_annotation_candidates</a><span>.shape_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/shapes.html'>shapes</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
                                     </tr>
                                     <tr>
                                         <td>maia_annotation_candidates_image_id_foreign</td>
@@ -492,24 +456,6 @@
                                             </table>
                                         </td>
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>reports_type_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/reports.html'>reports</a><span>.type_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/report_types.html'>report_types</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
                                     </tr>
                                     <tr>
                                         <td>storage_request_files_storage_request_id_foreign</td>
@@ -638,24 +584,6 @@
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
                                     </tr>
                                     <tr>
-                                        <td>pending_volumes_media_type_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/pending_volumes.html'>pending_volumes</a><span>.media_type_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/media_types.html'>media_types</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
-                                    </tr>
-                                    <tr>
                                         <td>pending_volumes_volume_id_foreign</td>
                                         <td>
                                             <table border='0' cellspacing='0' cellpadding='0'>
@@ -744,24 +672,6 @@
                                             </table>
                                         </td>
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>label_tree_user_role_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/label_tree_user.html'>label_tree_user</a><span>.role_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/roles.html'>roles</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
                                     </tr>
                                     <tr>
                                         <td>label_tree_user_user_id_foreign</td>
@@ -854,24 +764,6 @@
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
                                     </tr>
                                     <tr>
-                                        <td>project_user_project_role_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/project_user.html'>project_user</a><span>.project_role_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/roles.html'>roles</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
-                                    </tr>
-                                    <tr>
                                         <td>project_user_user_id_foreign</td>
                                         <td>
                                             <table border='0' cellspacing='0' cellpadding='0'>
@@ -888,24 +780,6 @@
                                             </table>
                                         </td>
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>video_annotations_shape_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/video_annotations.html'>video_annotations</a><span>.shape_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/shapes.html'>shapes</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
                                     </tr>
                                     <tr>
                                         <td>video_annotations_video_id_foreign</td>
@@ -962,24 +836,6 @@
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
                                     </tr>
                                     <tr>
-                                        <td>maia_jobs_state_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/maia_jobs.html'>maia_jobs</a><span>.state_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/maia_job_states.html'>maia_job_states</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
-                                    </tr>
-                                    <tr>
                                         <td>maia_jobs_user_id_foreign</td>
                                         <td>
                                             <table border='0' cellspacing='0' cellpadding='0'>
@@ -1014,24 +870,6 @@
                                             </table>
                                         </td>
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>users_role_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/users.html'>users</a><span>.role_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/roles.html'>roles</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
                                     </tr>
                                     <tr>
                                         <td>videos_volume_id_foreign</td>
@@ -1070,24 +908,6 @@
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
                                     </tr>
                                     <tr>
-                                        <td>project_invitations_role_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/project_invitations.html'>project_invitations</a><span>.role_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/roles.html'>roles</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
-                                    </tr>
-                                    <tr>
                                         <td>copria_color_sort_sequence_transect_id_foreign</td>
                                         <td>
                                             <table border='0' cellspacing='0' cellpadding='0'>
@@ -1104,24 +924,6 @@
                                             </table>
                                         </td>
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>annotations_shape_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/image_annotations.html'>image_annotations</a><span>.shape_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/shapes.html'>shapes</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
                                     </tr>
                                     <tr>
                                         <td>annotations_image_id_foreign</td>
@@ -1358,24 +1160,6 @@
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
                                     </tr>
                                     <tr>
-                                        <td>label_trees_visibility_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/label_trees.html'>label_trees</a><span>.visibility_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/visibilities.html'>visibilities</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
-                                    </tr>
-                                    <tr>
                                         <td>label_trees_version_id_foreign</td>
                                         <td>
                                             <table border='0' cellspacing='0' cellpadding='0'>
@@ -1556,24 +1340,6 @@
                                         <td><span title='Cascade on delete:&#10;Deletion of parent deletes child'>Cascade on delete</span></td>
                                     </tr>
                                     <tr>
-                                        <td>maia_training_proposals_shape_id_foreign</td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/maia_training_proposals.html'>maia_training_proposals</a><span>.shape_id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td>
-                                            <table border='0' cellspacing='0' cellpadding='0'>
-                                                <tr>
-                                                    <td><a href='tables/shapes.html'>shapes</a><span>.id</span></td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                        <td><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>Restrict delete</span></td>
-                                    </tr>
-                                    <tr>
                                         <td>maia_training_proposals_job_id_foreign</td>
                                         <td>
                                             <table border='0' cellspacing='0' cellpadding='0'>
@@ -1669,14 +1435,79 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td><a href='tables/volumes.html'>volumes</a></td>
+                                        <td>volumes_media_type_check</td>
+                                        <td>(((media_type &gt;= 1) AND (media_type &lt;= 2))) NOT VALID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href='tables/maia_annotation_candidates.html'>maia_annotation_candidates</a></td>
+                                        <td>maia_annotation_candidates_shape_check</td>
+                                        <td>(((shape &gt;= 1) AND (shape &lt;= 7))) NOT VALID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href='tables/reports.html'>reports</a></td>
+                                        <td>reports_type_check</td>
+                                        <td>(((type &gt;= 1) AND (type &lt;= 16))) NOT VALID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href='tables/pending_volumes.html'>pending_volumes</a></td>
+                                        <td>pending_volumes_media_type_check</td>
+                                        <td>(((media_type &gt;= 1) AND (media_type &lt;= 2))) NOT VALID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href='tables/label_tree_user.html'>label_tree_user</a></td>
+                                        <td>label_tree_user_role_check</td>
+                                        <td>(((role &gt;= 1) AND (role &lt;= 4))) NOT VALID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href='tables/project_user.html'>project_user</a></td>
+                                        <td>project_user_project_role_check</td>
+                                        <td>(((project_role &gt;= 1) AND (project_role &lt;= 4))) NOT VALID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href='tables/video_annotations.html'>video_annotations</a></td>
+                                        <td>video_annotations_shape_check</td>
+                                        <td>(((shape &gt;= 1) AND (shape &lt;= 7))) NOT VALID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href='tables/maia_jobs.html'>maia_jobs</a></td>
+                                        <td>maia_jobs_state_check</td>
+                                        <td>(((state &gt;= 1) AND (state &lt;= 6))) NOT VALID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href='tables/users.html'>users</a></td>
+                                        <td>users_role_check</td>
+                                        <td>(((role &gt;= 1) AND (role &lt;= 4))) NOT VALID</td>
+                                    </tr>
+                                    <tr>
                                         <td><a href='tables/project_invitations.html'>project_invitations</a></td>
                                         <td>check_max_uses</td>
                                         <td>(((max_uses IS NULL) OR (current_uses &lt;= max_uses)))</td>
                                     </tr>
                                     <tr>
+                                        <td><a href='tables/project_invitations.html'>project_invitations</a></td>
+                                        <td>project_invitations_role_check</td>
+                                        <td>(((role &gt;= 1) AND (role &lt;= 4))) NOT VALID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href='tables/image_annotations.html'>image_annotations</a></td>
+                                        <td>image_annotations_shape_check</td>
+                                        <td>(((shape &gt;= 1) AND (shape &lt;= 7))) NOT VALID</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href='tables/label_trees.html'>label_trees</a></td>
+                                        <td>label_trees_visibility_check</td>
+                                        <td>(((visibility &gt;= 1) AND (visibility &lt;= 2))) NOT VALID</td>
+                                    </tr>
+                                    <tr>
                                         <td><a href='tables/federated_search_models.html'>federated_search_models</a></td>
                                         <td>federated_search_models_type_check</td>
                                         <td>(((type)::text = ANY ((ARRAY[&#39;Biigle\LabelTree&#39;::character varying, &#39;Biigle\Project&#39;::character varying, &#39;Biigle\Volume&#39;::character varying])::text[])))</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href='tables/maia_training_proposals.html'>maia_training_proposals</a></td>
+                                        <td>maia_training_proposals_shape_check</td>
+                                        <td>(((shape &gt;= 1) AND (shape &lt;= 7))) NOT VALID</td>
                                     </tr>
                                 </tbody>
                             </table>

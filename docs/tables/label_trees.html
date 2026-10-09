@@ -182,7 +182,7 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="visibility_id">visibility_id</span></td>
+                                    <td><span id="visibility">visibility</span></td>
                                     <td>int4</td>
                                     <td>10</td>
                                     <td title=''></td>
@@ -194,10 +194,6 @@
                                     </td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
-                                            <tr>
-                                                <td title="label_trees.visibility_id references visibilities.id via label_trees_visibility_id_foreign"><a href='visibilities.html'>visibilities</a><span class='relatedKey'>.id</span></td>
-                                                <td class="constraint detail">label_trees_visibility_id_foreign<span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
                                         </table>
                                     </td>
                                     <td></td>
@@ -322,6 +318,32 @@
                     </div>
                     <div class="box box-primary">
                         <div class="box-header with-border">
+                            <i class="fa fa-sitemap"></i>
+                            <h3 class="box-title">Check Constraints</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table id="check_table" class="table table-bordered table-striped dataTable" role="grid">
+                                <thead align='left'>
+                                <tr>
+                                    <th>Constraint Name</th>
+                                    <th>Constraint</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>label_trees_visibility_check</td>
+                                    <td>(((visibility &gt;= 1) AND (visibility &lt;= 2))) NOT VALID</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
                             <i class="fa fa-code-fork"></i>
                             <h3 id="Relationships" class="box-title">Relationships</h3>
                             <div class="box-tools pull-right">
@@ -342,37 +364,34 @@
 <area shape="rect" id="node1" href="image_annotation_label_feature_vectors.html" target="_top" title="image_annotation_label_feature_vectors" alt="" coords="1023,5,1442,240">
 <area shape="rect" id="node2" href="labels.html" target="_top" title="labels" alt="" coords="721,116,906,380">
 <area shape="rect" id="node3" href="label_trees.html" target="_top" title="label_trees" alt="" coords="307,465,604,769">
-<area shape="rect" id="node7" href="label_tree_versions.html" target="_top" title="label_tree_versions" alt="" coords="15,409,263,585">
-<area shape="rect" id="node8" href="visibilities.html" target="_top" title="visibilities" alt="" coords="52,603,226,725">
+<area shape="rect" id="node7" href="label_tree_versions.html" target="_top" title="label_tree_versions" alt="" coords="15,541,263,717">
 <area shape="rect" id="node4" href="label_tree_authorized_project.html" target="_top" title="label_tree_authorized_project" alt="" coords="648,397,979,520">
 <area shape="rect" id="node5" href="label_tree_project.html" target="_top" title="label_tree_project" alt="" coords="696,537,932,660">
-<area shape="rect" id="node6" href="label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="706,677,921,829">
-<area shape="rect" id="node9" href="video_annotation_label_feature_vectors.html" target="_top" title="video_annotation_label_feature_vectors" alt="" coords="1025,515,1440,749">
+<area shape="rect" id="node6" href="label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="706,677,921,824">
+<area shape="rect" id="node8" href="video_annotation_label_feature_vectors.html" target="_top" title="video_annotation_label_feature_vectors" alt="" coords="1025,512,1440,747">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/label_trees.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
                                     <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
-<area shape="rect" id="node1" href="image_annotation_label_feature_vectors.html" target="_top" title="image_annotation_label_feature_vectors" alt="" coords="1304,158,1723,393">
-<area shape="rect" id="node2" href="image_annotations.html" target="_top" title="image_annotations" alt="" coords="648,160,894,248">
-<area shape="rect" id="node3" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="953,265,1245,353">
-<area shape="rect" id="node4" href="labels.html" target="_top" title="labels" alt="" coords="678,330,864,594">
-<area shape="rect" id="node5" href="label_trees.html" target="_top" title="label_trees" alt="" coords="307,778,604,1082">
-<area shape="rect" id="node6" href="users.html" target="_top" title="users" alt="" coords="704,612,838,700">
-<area shape="rect" id="node15" href="label_sources.html" target="_top" title="label_sources" alt="" coords="355,450,556,538">
-<area shape="rect" id="node13" href="label_tree_versions.html" target="_top" title="label_tree_versions" alt="" coords="15,986,263,1162">
-<area shape="rect" id="node14" href="visibilities.html" target="_top" title="visibilities" alt="" coords="52,846,226,969">
-<area shape="rect" id="node12" href="roles.html" target="_top" title="roles" alt="" coords="390,1100,521,1188">
-<area shape="rect" id="node7" href="image_labels.html" target="_top" title="image_labels" alt="" coords="1001,442,1197,530">
-<area shape="rect" id="node8" href="label_tree_authorized_project.html" target="_top" title="label_tree_authorized_project" alt="" coords="1348,841,1679,964">
-<area shape="rect" id="node9" href="projects.html" target="_top" title="projects" alt="" coords="1020,894,1178,982">
-<area shape="rect" id="node10" href="label_tree_project.html" target="_top" title="label_tree_project" alt="" coords="1396,981,1632,1104">
-<area shape="rect" id="node11" href="label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="992,1036,1206,1188">
-<area shape="rect" id="node16" href="maia_annotation_candidates.html" target="_top" title="maia_annotation_candidates" alt="" coords="938,160,1260,248">
-<area shape="rect" id="node17" href="video_annotation_label_feature_vectors.html" target="_top" title="video_annotation_label_feature_vectors" alt="" coords="1306,589,1721,824">
-<area shape="rect" id="node18" href="video_annotations.html" target="_top" title="video_annotations" alt="" coords="651,717,891,805">
-<area shape="rect" id="node19" href="video_annotation_labels.html" target="_top" title="video_annotation_labels" alt="" coords="956,653,1242,741">
-<area shape="rect" id="node20" href="video_labels.html" target="_top" title="video_labels" alt="" coords="1004,548,1194,636">
+<area shape="rect" id="node1" href="image_annotation_label_feature_vectors.html" target="_top" title="image_annotation_label_feature_vectors" alt="" coords="1304,177,1723,412">
+<area shape="rect" id="node2" href="image_annotations.html" target="_top" title="image_annotations" alt="" coords="648,69,894,157">
+<area shape="rect" id="node3" href="image_annotation_labels.html" target="_top" title="image_annotation_labels" alt="" coords="953,175,1245,263">
+<area shape="rect" id="node4" href="labels.html" target="_top" title="labels" alt="" coords="678,277,864,541">
+<area shape="rect" id="node5" href="label_trees.html" target="_top" title="label_trees" alt="" coords="307,807,604,1111">
+<area shape="rect" id="node6" href="users.html" target="_top" title="users" alt="" coords="704,561,838,649">
+<area shape="rect" id="node13" href="label_sources.html" target="_top" title="label_sources" alt="" coords="355,397,556,485">
+<area shape="rect" id="node12" href="label_tree_versions.html" target="_top" title="label_tree_versions" alt="" coords="15,883,263,1059">
+<area shape="rect" id="node7" href="image_labels.html" target="_top" title="image_labels" alt="" coords="1001,457,1197,545">
+<area shape="rect" id="node8" href="label_tree_authorized_project.html" target="_top" title="label_tree_authorized_project" alt="" coords="1348,1056,1679,1179">
+<area shape="rect" id="node9" href="projects.html" target="_top" title="projects" alt="" coords="1020,992,1178,1080">
+<area shape="rect" id="node10" href="label_tree_project.html" target="_top" title="label_tree_project" alt="" coords="1396,916,1632,1039">
+<area shape="rect" id="node11" href="label_tree_user.html" target="_top" title="label_tree_user" alt="" coords="992,668,1206,815">
+<area shape="rect" id="node14" href="maia_annotation_candidates.html" target="_top" title="maia_annotation_candidates" alt="" coords="938,69,1260,157">
+<area shape="rect" id="node15" href="video_annotation_label_feature_vectors.html" target="_top" title="video_annotation_label_feature_vectors" alt="" coords="1306,612,1721,847">
+<area shape="rect" id="node16" href="video_annotations.html" target="_top" title="video_annotations" alt="" coords="651,815,891,903">
+<area shape="rect" id="node17" href="video_annotation_labels.html" target="_top" title="video_annotation_labels" alt="" coords="956,563,1242,651">
+<area shape="rect" id="node18" href="video_labels.html" target="_top" title="video_labels" alt="" coords="1004,352,1194,440">
 </map>
                                         <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/label_trees.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
