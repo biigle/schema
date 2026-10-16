@@ -269,9 +269,6 @@
          <index name="image_annotation_label_feature_vectors_annotation_id_index" unique="false">
             <column ascending="true" name="annotation_id"/>
          </index>
-         <index name="image_annotation_label_feature_vectors_id_index" unique="false">
-            <column ascending="true" name="id"/>
-         </index>
          <index name="image_annotation_label_feature_vectors_label_id_index" unique="false">
             <column ascending="true" name="label_id"/>
          </index>
@@ -1084,9 +1081,6 @@
          </index>
          <index name="video_annotation_label_feature_vectors_annotation_id_index" unique="false">
             <column ascending="true" name="annotation_id"/>
-         </index>
-         <index name="video_annotation_label_feature_vectors_id_index" unique="false">
-            <column ascending="true" name="id"/>
          </index>
          <index name="video_annotation_label_feature_vectors_label_id_index" unique="false">
             <column ascending="true" name="label_id"/>
